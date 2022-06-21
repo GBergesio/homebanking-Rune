@@ -210,6 +210,7 @@ const app = Vue.createApp({
       })
     },
     seteoDescription() {
+    this.allDescriptionsTo = this.allDescriptionsTo.map(transaction => transaction.account)
       const set1 = new Set(this.allDescriptionsTo)
       console.log(set1);
     }

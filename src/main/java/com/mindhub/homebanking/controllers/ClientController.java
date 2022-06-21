@@ -48,6 +48,7 @@ public class ClientController {
         if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || password.isEmpty()){
             return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
         }
+
         if (clientService.getClientByEmail(email) !=  null) {
             return new ResponseEntity<>("Email already in use", HttpStatus.FORBIDDEN);
         }
@@ -62,9 +63,9 @@ public class ClientController {
 
 //  Metodo para retornar la informacion del cliente autenticado
     @GetMapping("/clients/current")
-    public ClientDTO getAll(Authentication authentication) {
+    public ClientDTO getCurrentClient(Authentication authentication) {
         Client client = clientService.getClientCurrent(authentication);
-        ClientDTO clientDTO = new ClientDTO(client);
-        return clientDTO;
+        return new ClientDTO(client);
     }
+
 }

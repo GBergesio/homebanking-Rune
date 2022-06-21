@@ -22,28 +22,25 @@ public class WebAuthorization extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
 
-                .antMatchers("/admin/**","/rest/**","/h2-console/**","/manager.html").hasAuthority("ADMIN")
-
                 .antMatchers("/web/index.html","/web/login.html","/web/data/index.js","/web/data/login.js").permitAll()
 
                 .antMatchers(HttpMethod.POST,"/api/transactions/posnet").permitAll()
 
                 .antMatchers("/web/styles/**","/web/img/**","/web/vendor/**").permitAll()
 
-                .antMatchers(HttpMethod.POST,"/api/loans/createLoan").hasAuthority("ADMIN")
+                .antMatchers("/web/accounts.html","/web/account.html","/web/cards.html","/web/transfers.html","/web/create-cards.html", "/web/loan-application.html").hasAuthority("CLIENT")
 
                 .antMatchers(HttpMethod.POST, "/api/clients/current/accounts","/api/clients/current/cards","/api/transactions/**","/api/loans","/api/cards/delete","/api/accounts/delete").hasAuthority("CLIENT")
 
-
                 .antMatchers(HttpMethod.POST, "/api/clients").permitAll()
-
 
                 .antMatchers(HttpMethod.GET, "/api/clients/current/**","/api/loans").hasAnyAuthority("CLIENT")
 
-
+                .antMatchers("/admin/**","/rest/**","/h2-console/**","/manager.html").hasAuthority("ADMIN")
                 .antMatchers("/api/**").hasAuthority("ADMIN")
                 .antMatchers(HttpMethod.GET, "/api/transactions/generate").hasAnyAuthority("ADMIN")
-                .antMatchers("/web/accounts.html","/web/account.html","/web/cards.html","/web/transfers.html","/web/create-cards.html").hasAuthority("CLIENT");
+                .antMatchers(HttpMethod.POST,"/api/loans/createLoan").hasAuthority("ADMIN")
+;
 
 
         http.formLogin()
@@ -63,6 +60,7 @@ public class WebAuthorization extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
+
         //disabling frameOptions so h2-console can be accessed
 
         http.headers().frameOptions().disable();
