@@ -22,7 +22,7 @@ const app = Vue.createApp({
     },
     created() {
 
-        axios.get(`http://localhost:8080/api/clients/current`)
+        axios.get(`/api/clients/current`)
             .then(data => {
                 this.dataClient = data.data
                 this.accountsClient = data.data.accountDTO
@@ -243,4 +243,3 @@ $(document).ready(function () {
         return false;
     });
 });
-

@@ -21,19 +21,6 @@ const app = Vue.createApp({
 
         this.loadAccounts()
         this.loadClient()
-
-        // axios.get(`http://localhost:8080/api/clients/current`)
-        //     .then(data => {
-        //         this.dataClient = data.data
-        //         this.accountsClient = this.dataClient.accountDTO
-        //         this.infoClient = this.dataClient.firstName + " " + this.dataClient.lastName
-        //         this.cutName()
-        //         this.sortAccounts()
-        //         this.searchTransactions()
-        //         this.searchTransactionsDescription()
-        //         this.seteoDescription()
-        //         this.searchBalance()
-        //     })
     },
     methods: {
         loadAccounts() {
@@ -310,4 +297,3 @@ $(document).ready(function () {
         return false;
     });
 });
-

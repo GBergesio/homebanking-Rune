@@ -7,26 +7,20 @@ const app = Vue.createApp({
             password: "",
             firstName: "",
             lastName: "",
-
             emailSignUp: "",
             passwordSignUp: "",
             firstNameSignUp: "",
             lastNameSignUp: "",
-
             emailReset: "",
             passwordReset: "",
-
-
             errorMessage: "",
             notification: false,
             notificationSignUp: false,
-
             fadein: false,
             fadeOut: false
         }
     },
     created() {
-
     },
     methods: {
         login() {
@@ -87,25 +81,6 @@ const app = Vue.createApp({
                 }
             })
         },
-
-        // signUp2() {
-        //     axios.post('/api/clients', `firstName=${this.firstNameSignUp}&lastName=${this.lastNameSignUp}&email=${this.emailSignUp}&password=${this.passwordSignUp}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
-        //         .then(response =>
-        //             axios.post('/api/login', `email=${this.emailSignUp}&password=${this.passwordSignUp}`,
-        //                 { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
-        //         ).then(response =>
-        //             setTimeout(function () {
-        //                 window.location.href = './accounts.html'
-        //             }, 1000))
-        //         .catch(error => {
-        //             if (error.response.status == 403) {
-        //                 if (error.response.data == 'Email already in use') {
-        //                     this.errorMessage = "Email already in use"
-        //                 }
-        //                 this.notificationSignUp = true;
-        //             }
-        //         })
-        // },
     },
     computed: {
         compClasses: function () {
@@ -114,9 +89,6 @@ const app = Vue.createApp({
                 fadeOut: this.fadeOut
             }
         },
-
-
-
     },
 }).mount('#app')
 

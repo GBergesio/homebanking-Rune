@@ -13,13 +13,11 @@
   --duration: 1200ms;
   --iterations: 1;
 }
-
 *,
 ::before,
 ::after {
   box-sizing: border-box
 }
-
 * {
   padding: 0;
   margin: 0;
@@ -1003,7 +1001,6 @@ opacity: 0;
 ul.ks-cboxtags li input[type="checkbox"]:focus + label {
 border: 2px solid #e9a1ff;
 }
-
 .btnLb{
   background-color: #12bbd4;
 }

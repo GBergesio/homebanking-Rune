@@ -39,7 +39,7 @@ const app = Vue.createApp({
 
     this.loadAccounts()
 
-    axios.get(`http://localhost:8080/api/clients/current`)
+    axios.get(`/api/clients/current`)
       .then(data => {
         this.dataClient = data.data
         this.accountsClient = this.dataClient.accountDTO
@@ -56,12 +56,12 @@ const app = Vue.createApp({
       })
   },
   methods: {
-    loadAccounts(){
+    loadAccounts() {
       axios.get(`/api/clients/current/accounts`)
-      .then(data => {
-        this.accountsClient2 = data.data
-        console.log(this.accountsClient2);
-      })
+        .then(data => {
+          this.accountsClient2 = data.data
+          console.log(this.accountsClient2);
+        })
     },
     cutName() {
       let initialName = this.dataClient.firstName
@@ -81,48 +81,6 @@ const app = Vue.createApp({
     },
     makeTransfer() {
       Swal.fire({
-          title: 'Are you sure?',
-          text: "You won't be able to revert this!",
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, make transfer!'
-      }).then((result) => {
-          if (result.isConfirmed) {
-            axios.post('/api/transactions', `amount=${this.amount}&description=${this.description}&rootAccount=${this.rootAccount}&destinationAccount=${this.destinationAccount}`)
-                  .catch(function (error) {
-                      this.error = error.response.data
-                  })
-                  .then(
-                      setTimeout(function () {
-                          if (this.error == "Missing Data" || this.error == "Choose your Account" || this.error == "Choose your Account"
-                          || this.error == "Choose destination account" || this.error == "Amount less than or equal to 0" || this.error == "Missing enter description"
-                          || this.error == "You cannot transfer to the same account" || this.error == "Origin account does not exist" || this.error == "Destination account does not exist"
-                          || this.error == "Your Account does not have enough balance"
-                          ) {
-                              Swal.fire({
-                                  title: "Error",
-                                  text: `${this.error}`,
-                                  icon: "error"
-                              })
-                              this.error = ""
-                          } else {
-                              Swal.fire({
-                                  title: "Transfer",
-                                  text: "Successful transfer",
-                                  icon: "success"
-                              })
-                              setTimeout(function () {
-                                  location.reload()
-                              }, 1000)
-                          }
-                      }, 1000))
-          }
-      })
-  },
-  makeTransferOwn() {
-    Swal.fire({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
         icon: 'warning',
@@ -130,43 +88,81 @@ const app = Vue.createApp({
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Yes, make transfer!'
-    }).then((result) => {
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios.post('/api/transactions', `amount=${this.amount}&description=${this.description}&rootAccount=${this.rootAccount}&destinationAccount=${this.destinationAccount}`)
+            .catch(function (error) {
+              this.error = error.response.data
+            })
+            .then(
+              setTimeout(function () {
+                if (this.error == "Missing Data" || this.error == "Choose your Account" || this.error == "Choose your Account"
+                  || this.error == "Choose destination account" || this.error == "Amount less than or equal to 0" || this.error == "Missing enter description"
+                  || this.error == "You cannot transfer to the same account" || this.error == "Origin account does not exist" || this.error == "Destination account does not exist"
+                  || this.error == "Your Account does not have enough balance"
+                ) {
+                  Swal.fire({
+                    title: "Error",
+                    text: `${this.error}`,
+                    icon: "error"
+                  })
+                  this.error = ""
+                } else {
+                  Swal.fire({
+                    title: "Transfer",
+                    text: "Successful transfer",
+                    icon: "success"
+                  })
+                  setTimeout(function () {
+                    location.reload()
+                  }, 1000)
+                }
+              }, 1000))
+        }
+      })
+    },
+    makeTransferOwn() {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, make transfer!'
+      }).then((result) => {
         if (result.isConfirmed) {
           axios.post('/api/transactions', `amount=${this.amountOwn}&description=${this.descriptionOwn}&rootAccount=${this.rootAccountOwn}&destinationAccount=${this.destinationAccountOwn}`)
-                .catch(function (error) {
-                    this.error = error.response.data
-                })
-                .then(
-                    setTimeout(function () {
-                        if (this.error == "Missing Data" || this.error == "Choose your Account" || this.error == "Choose your Account"
-                        || this.error == "Choose destination account" || this.error == "Amount less than or equal to 0" || this.error == "Missing enter description"
-                        || this.error == "You cannot transfer to the same account" || this.error == "Origin account does not exist" || this.error == "Destination account does not exist"
-                        || this.error == "Your Account does not have enough balance"
-                        ) {
-                            Swal.fire({
-                                title: "Error",
-                                text: `${this.error}`,
-                                icon: "error"
-                            })
-                            this.error = ""
-                        } else {
-                            Swal.fire({
-                                title: "Transfer",
-                                text: "Successful transfer",
-                                icon: "success"
-                            })
-                            setTimeout(function () {
-                                location.reload()
-                            }, 1000)
-                        }
-                    }, 1000))
+            .catch(function (error) {
+              this.error = error.response.data
+            })
+            .then(
+              setTimeout(function () {
+                if (this.error == "Missing Data" || this.error == "Choose your Account" || this.error == "Choose your Account"
+                  || this.error == "Choose destination account" || this.error == "Amount less than or equal to 0" || this.error == "Missing enter description"
+                  || this.error == "You cannot transfer to the same account" || this.error == "Origin account does not exist" || this.error == "Destination account does not exist"
+                  || this.error == "Your Account does not have enough balance"
+                ) {
+                  Swal.fire({
+                    title: "Error",
+                    text: `${this.error}`,
+                    icon: "error"
+                  })
+                  this.error = ""
+                } else {
+                  Swal.fire({
+                    title: "Transfer",
+                    text: "Successful transfer",
+                    icon: "success"
+                  })
+                  setTimeout(function () {
+                    location.reload()
+                  }, 1000)
+                }
+              }, 1000))
         }
-    })
-},
-
-
-
-
+      })
+    },
     makeTransferOwn2() {
       axios.post('/api/transactions', `amount=${this.amountOwn}&description=${this.descriptionOwn}&rootAccount=${this.rootAccountOwn}&destinationAccount=${this.destinationAccountOwn}`)
         .then(response =>

@@ -18,12 +18,10 @@ const app = Vue.createApp({
             clientLoans: [],
             errorMessage: "",
             notification: false,
-
         }
     },
     created() {
         this.loadAccounts()
-
         axios.get(`/api/clients/current`)
             .then(data => {
                 this.dataClient = data.data
@@ -31,28 +29,17 @@ const app = Vue.createApp({
                 this.infoClient = data.data.firstName + " " + data.data.lastName
                 this.cutName()
                 this.loans = this.dataClient.loans
-                // console.log(this.dataClient)
-
             })
         axios.get(`/api/loans`)
             .then(data => {
                 this.loans = data.data
-                // console.log(this.loans)
             })
-        // this.loadAccounts()
-        // axios.get(`/api/clientLoans`)
-        //     .then(data => {
-        //         this.clientLoans = data.data
-        //         console.log(this.clientLoans)
-        //     })
-
     },
     methods: {
         loadAccounts() {
             axios.get(`/api/clients/current/accounts`)
                 .then(data => {
                     this.accountsClient2 = data.data
-                    //   console.log(this.accountsClient2);
                 })
         },
         cutName() {

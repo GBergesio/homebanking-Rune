@@ -18,16 +18,8 @@ const app = Vue.createApp({
     }
   },
   created() {
-    // const urlParams = new URLSearchParams(window.location.search);
-    // const urlParamsDos = new URLSearchParams(window.location.search);
-    // const id = urlParams.get('id')
-    // const idDos = urlParamsDos.get('id')
     this.loadData()
     this.loadAccounts()
-
-
-
-    // console.log(this.amountLoan);
   },
   methods: {
     currentDateTime() {
@@ -118,11 +110,6 @@ const app = Vue.createApp({
       })
       console.log(newLoan);
     },
-
-
-
-
-
   },
   computed: {
     showClientInformation(client) {

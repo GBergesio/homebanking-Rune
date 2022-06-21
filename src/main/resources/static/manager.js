@@ -23,7 +23,7 @@ const app = Vue.createApp({
         }
     },
     created() {
-        axios.get(`http://localhost:8080/api/clients`)
+        axios.get(`/api/clients`)
             .then(data => {
                 this.datos = data.data
                 console.log(data)
@@ -38,19 +38,19 @@ const app = Vue.createApp({
                     lastName: this.lastName,
                     email: this.email,
                 }
-                axios.post('http://localhost:8080/rest/clients/', this.client)
+                axios.post('/rest/clients/', this.client)
                 location.reload()
             }
         },
         takeClient(cliente) {
             this.clienteSeleccionado = cliente;
-            this.urlClienteSeleccionado = 'http://localhost:8080/rest/clients/' + cliente.id;
+            this.urlClienteSeleccionado = '/rest/clients/' + cliente.id;
             console.log(this.clienteSeleccionado)
             console.log(this.urlClienteSeleccionado)
         },
         deleteClient(url) {
             this.clienteSeleccionado.accounts.forEach(account =>{
-                axios.delete("http://localhost:8080/rest/accounts/" + account.id)
+                axios.delete("/rest/accounts/" + account.id)
                 
             })
             function eliminando(){

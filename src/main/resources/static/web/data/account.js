@@ -21,16 +21,14 @@ const app = Vue.createApp({
         const urlParamsDos = new URLSearchParams(window.location.search);
         const id = urlParams.get('id')
         const idDos = urlParamsDos.get('id')
-
-         axios.get(`http://localhost:8080/api/clients/current`)
+         axios.get(`/api/clients/current`)
             .then(data => {
                 this.dataClient = data.data
                 this.accountsClient = data.data.accounts
                 this.infoClient = data.data.firstName + " " + data.data.lastName
                 this.cutName()
             }),
-
-        axios.get(`http://localhost:8080/api/clients/current/accounts/`+ id)
+        axios.get(`/api/clients/current/accounts/`+ id)
             .then(dataAcc => {
                 this.dataAccount = dataAcc.data
                 this.accNumber = this.dataAccount.number
@@ -91,19 +89,15 @@ const app = Vue.createApp({
           },
     },
     computed: {
-
     },
 }).mount('#app')
 
-
 document.addEventListener("DOMContentLoaded", function (event) {
-
     const showNavbar = (toggleId, navId, bodyId, headerId) => {
         const toggle = document.getElementById(toggleId),
             nav = document.getElementById(navId),
             bodypd = document.getElementById(bodyId),
             headerpd = document.getElementById(headerId)
-
         // Validate that all variables exist
         if (toggle && nav && bodypd && headerpd) {
             toggle.addEventListener('click', () => {
@@ -118,12 +112,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
             })
         }
     }
-
     showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
-
     /*===== LINK ACTIVE =====*/
     const linkColor = document.querySelectorAll('.nav_link')
-
     function colorLink() {
         if (linkColor) {
             linkColor.forEach(l => l.classList.remove('active'))
@@ -131,7 +122,4 @@ document.addEventListener("DOMContentLoaded", function (event) {
         }
     }
     linkColor.forEach(l => l.addEventListener('click', colorLink))
-
 });
-
-

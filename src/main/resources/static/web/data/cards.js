@@ -15,7 +15,7 @@ const app = Vue.createApp({
         }
     },
     created() {
-        axios.get(`http://localhost:8080/api/clients/current`)
+        axios.get(`/api/clients/current`)
             .then(data => {
                 this.dataClient = data.data
                 this.accountsClient = data.data.accountDTO
@@ -67,9 +67,7 @@ const app = Vue.createApp({
             let time = new Date().getTime();
             // card
             let dateCard = new Date(card).getTime();
-
             let difference = dateCard - time
-
             let toOvercome = 5270388157
 
             if (difference < toOvercome) {
@@ -93,7 +91,6 @@ const app = Vue.createApp({
             }
             return console.log(client)
         },
-
     },
 }).mount('#app')
 
