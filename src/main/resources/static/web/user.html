@@ -81,14 +81,16 @@
         </div>
 
         <main class="fade-in-fwd">
-            <div class="row d-flex justify-content-center">
-                <div class="pt-5 w-100 gap-3 d-flex justify-content-center">
-                    <div class="infoClientCard p-5 pt-4 col-xl-3 col-sm-12">
+            <div class="container-fluid">
+                <div class="row bg-primary pt-3 gap-3">
+
+                    <div class="infoClientCard p-5 pt-4 col-xl-12">
                         <h4 class="text-center pb-1">Client</h4>
                         <h6> {{infoClient}} </h6>
                         <h6>Email: {{this.client.email}} </h6>
                     </div>
-                    <div class="infoClientCard p-5 pt-4 col-xl-3 col-sm-12">
+
+                    <div class="infoClientCard p-5 pt-4 col-xl-3 col-12">
                         <h4 class="text-center pb-1">Accounts Active</h4>
                         <div v-for="account in accounts">
                             <h5>{{account.number}} <span class="spanAccount"><b>Savings Account</b></span></h5>
@@ -102,7 +104,7 @@
                                 Accounts</button>
                         </div>
                     </div>
-                    <div class="infoClientCard p-5 pt-4 col-xl-3 col-sm-12">
+                    <div class="infoClientCard p-5 pt-4 col-xl-3 col-12">
                         <h4 class="text-center pb-1">Cards Active</h4>
                         <div v-for="card in cards">
                             <h5>Visa <span v-if="card.type == 'CREDIT'"><b>Credit</b></span><span
@@ -116,7 +118,7 @@
                             </button>
                         </div>
                     </div>
-                    <div class="infoClientCard p-5 pt-4 col-xl-3 col-sm-12">
+                    <div class="infoClientCard p-5 pt-4 col-xl-3 col-12">
                         <h4 class="text-center pb-1">Loans Active</h4>
                         <div v-for="loan in loans">
                             <h5>{{loan.name}}</h5>
@@ -126,6 +128,7 @@
                             <button class="btn btn-purple" disabled>Pay Loan (Currently disabled)</button>
                         </div>
                     </div>
+
                 </div>
             </div>
         </main>

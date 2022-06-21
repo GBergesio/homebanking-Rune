@@ -67,6 +67,8 @@ const app = Vue.createApp({
             link.setAttribute("download",`Resume.pdf`)
             document.body.appendChild(link)
             link.click()
+            console.log(this.sinceDate);
+            console.log(this.untilDate);
         })
         },
         sortTransactions(){

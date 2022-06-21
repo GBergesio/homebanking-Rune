@@ -31,7 +31,7 @@ const app = Vue.createApp({
         confirmButtonText: 'Yes, make transaction!'
       }).then((result) => {
         if (result.isConfirmed) {
-          axios.post('http://localhost:8080/api/transactions/posnet', newPayment)
+          axios.post('/api/transactions/posnet', newPayment)
             .catch(function (error) {
               this.error = error.response.data
             })
