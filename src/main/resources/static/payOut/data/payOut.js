@@ -15,7 +15,6 @@ const app = Vue.createApp({
   methods: {
     makePayment(){
       let newPayment = {
-        // cardHolder: this.cardHolder, 
         cardNumber: this.cardNumber,
         cvv: this.cvv,
         description: this.description,

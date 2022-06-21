@@ -745,7 +745,7 @@ a {
 }
 
 .cardQuickAccess:hover .overlay {
-  transform: scale(4) translateZ(0);
+  transform: scale(10) translateZ(0);
 }
 
 .cardQuickAccess:hover .circle {
