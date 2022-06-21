@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href='https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css' rel='stylesheet'>
+  <link href="./styles/style.css" rel="stylesheet">
+  <link href="./styles/styleViejo.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,800;1,200;1,300;1,400;1,500&display=swap"
+    rel="stylesheet">
+  <link href="https://unpkg.com/webkul-micron@1.1.6/dist/css/micron.min.css" type="text/css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <title>Homebanking - Accounts</title>
+</head>
+
+<body id="body-pd">
+  <div id="app">
+    <header class="header" id="header">
+      <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+      <div class="header_img_logo slide-in-blurred-top"><img src="./img/runebank.png" alt="Logo"></div>
+      <div class="header_img"> <img src="./img/userImg.jpg" alt="userImg"></div>
+    </header>
+    <div class="l-navbar fade-in-fwd" id="nav-bar">
+      <nav class="nav">
+        <div>
+          <a href="#" class="nav_logo"><i class='bx bxs-bank' style='color:#ffffff'></i><span class="nav_logo-name">Rune
+              Bank</span></a>
+          <div class="nav_list">
+            <a href="#" class="nav_link"><i class='bx bx-user nav_icon'></i><span class="nav_name">User</span></a>
+            <a href="./accounts.html" class="nav_link active"><i class='bx bx-wallet'></i><span
+                class="nav_name">Accounts</span></a>
+            <a href="./cards.html" class="nav_link"><i class='bx bx-credit-card-alt'></i><span
+                class="nav_name">Cards</span></a>
+            <a href="#" class="nav_link"><i class='bx bx-transfer'></i><span class="nav_name">Transfers</span></a>
+            <a href="#" class="nav_link"><i class='bx bx-bar-chart-alt-2 nav_icon'></i><span class="nav_name">
+                Loans</span></a>
+            <a href="#" class="nav_link"><i class='bx bx-money-withdraw'></i><span class="nav_name">Payments</span></a>
+          </div>
+        </div>
+        <a href="#" class="nav_link" @click="logout"><i class='bx bx-log-out nav_icon'></i><span
+            class="nav_name">SignOut</span></a>
+        <!-- <button class="btn btn-warning" type="button" @click="logout">Salir</button> -->
+      </nav>
+    </div>
+
+
+    <main class="fade-in">
+
+      <div class="ps-3 pt-5 welcome row fade-in-fwd">
+        <div class="col-xl-3 col-12">
+          <h2>Welcome back</h2>
+          <p class="reveal-text" v-cloak>{{currentDateTime()}}, <span class="text-secondColor">{{infoClient}}</span></p>
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-md-12 col-xl-5 bg-light containerBalCard rounded p-4 mt-2">
+        <h4 class="d-flex align-items-center"><i class='bx bxs-credit-card me-3 bx-lg' style='color:#2f195e'></i>Cards
+        </h4>
+        <div id="menu">
+          <div class="panel"
+            :class="{'titaniumAcc' : card.color === 'TITANIUM', 'goldAcc' : card.color === 'GOLD' , 'silverAcc' : card.color === 'SILVER'}"
+            v-for="card in cards">
+            <!-- <i class='bx bxl-visa bx-rotate-270 bx-lg' ></i> -->
+            <h2 class="name">{{card.type}} CARD</h2>
+            <!-- <button @click="copiarNumber(card.number)" class="type btn btn-purple"><p class="ms-1 text-center"><span>Ending:
+            </span>{{card.number.toString().slice(-4)}}</p></button> -->
+            <h3 class="type" @click="copiarNumber(card.number)">Ending: {{card.number.toString().slice(-4)}}</h3>
+            <span class="abv">{{card.color}}</span>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+    </main>
+
+  </div>
+  <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+  <script src="https://unpkg.com/webkul-micron@1.1.6/dist/script/micron.min.js" type="text/javascript"></script>
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/vue@3"></script>
+  <script src="./data/accounts.js"></script>
+
+
+
+</body>
+
+</html>

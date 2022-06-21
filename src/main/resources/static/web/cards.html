@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css' rel='stylesheet'>
+    <link href="./styles/style.css" rel="stylesheet">
+    <link href="./styles/cards.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,800;1,200;1,300;1,400;1,500&display=swap"
+        rel="stylesheet">
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <title>Homebanking - Cards</title>
+</head>
+
+<body id="body-pd">
+    <div id="app">
+
+
+        <header class="header" id="header">
+            <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+            <div class="header_img_logo slide-in-blurred-top"><img src="./img/runebank.png" alt="Logo"></div>
+            <!-- <button class="btn"> <div class="header_img"><h5>{{initials}}</h5></div></button> -->
+            <div class="menu">
+                <ul class="d-flex justify-content-end">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <div class="header_img d-none d-sm-block">
+                                <h5 v-cloak>{{initials}}</h5>
+                            </div>
+                            <!-- <img src="assets/images/avatar/avatar-1.png" alt=""> -->
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="./user.html"><i class="fa fa-user size-icon-1"></i>
+                                <span>My Profile</span></a>
+                            <!-- <a class="dropdown-item" href="settings.html"><i class="fa fa-cog size-icon-1"></i>
+                                <span>Settings</span></a> -->
+                            <hr class="dropdown-divider">
+                            <a class="dropdown-item" href="#" @click="logout"><i class="bx bx-exit  size-icon-1"></i>
+                                <span>SignOut</span></a>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </header>
+
+        <div class="l-navbar" id="nav-bar">
+            <nav class="nav">
+                <div>
+                    <a href="./accounts.html" class="nav_logo"><i class='bx bxs-bank' style='color:#ffffff'></i><span
+                            class="nav_logo-name">Rune Bank</span></a>
+                    <div class="nav_list">
+                        <a href="./accounts.html" class="nav_link "><i class='bx bx-wallet'></i><span
+                                class="nav_name">Accounts</span></a>
+                        <a href="#" class="nav_link active"><i class='bx bx-credit-card-alt'></i><span
+                                class="nav_name">Cards</span></a>
+                        <a href="./transfers.html" class="nav_link"><i class='bx bx-transfer'></i><span
+                                class="nav_name">Transfers</span></a>
+                        <a href="./loan-application.html" class="nav_link"><i
+                                class='bx bx-bar-chart-alt-2 nav_icon'></i><span class="nav_name">
+                                Loans</span></a>
+                        <a href="../payOut/payOut.html" class="nav_link"><i class='bx bx-money-withdraw'></i><span
+                                class="nav_name">Payments</span></a>
+                        <a href="./user.html" class="nav_link"><i class='bx bx-user nav_icon'></i><span
+                                class="nav_name">User</span></a>
+                    </div>
+                </div>
+                <a href="#" class="nav_link" @click="logout"><i class='bx bx-log-out nav_icon'></i><span
+                        class="nav_name">SignOut</span></a>
+            </nav>
+        </div>
+
+        <main class="fade-in-fwd pb-3">
+
+            <div class="ps-3 pt-5 welcome">
+                <h2>{{infoClient}} </h2>
+            </div>
+
+            <div class="container-fluid">
+                <section>
+                    <div class="row">
+                        <div class="col-12 mt-3 mb-1">
+                            <h4 class="text-uppercase">Quick Access</h4>
+                        </div>
+                    </div>
+                    <div class="row" id="aRune">
+                        <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                            <div>
+                                <a href="./accounts.html" class="cardQuickAccess qAviolet">
+                                    <div class="overlay"></div>
+                                    <p><i class='bx bx-wallet'></i> Accounts</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                            <div>
+                                <a href="#" class="cardQuickAccess qAgreen">
+                                    <div class="overlay"></div>
+                                    <p><i class='bx bx-money-withdraw'></i> Payments</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                            <div>
+                                <a href="#" class="cardQuickAccess qAblue">
+                                    <div class="overlay"></div>
+                                    <p><i class='bx bx-bar-chart-alt-2 nav_icon'></i> Loans</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                            <div>
+                                <a href="./transfers.html" class="cardQuickAccess qAyellow">
+                                    <div class="overlay"></div>
+                                    <p><i class='bx bx-transfer'></i> Transfers</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <div v-if="cards.length==0" class="row p-3 d-flex justify-content-center">
+                <h3 class="text-center">You don't have any card yet</h3>
+                <button class="btn btnnn w-25"><a class="aId" href="./create-cards.html"><i
+                            class='bx bx-credit-card'></i>Request a New
+                        Card</a>
+                </button>
+            </div>
+
+            <div v-else class="row col-xl-12 col-sm-12 col-12">
+                <div class="row col-xl-6 col-sm-12 col-12 gap-2 d-flex justify-content-center">
+                    <h3 class="text-center">Your Credit Cards</h3>
+                    <div class="card" v-for="card in cards.filter(card=> card.type=='CREDIT')">
+                        <div class="card__front card__part"
+                            :class="{'titanium' : card.color === 'TITANIUM', 'gold' : card.color === 'GOLD' , 'silver' : card.color === 'SILVER'}">
+                            <div class="row">
+                                {{compareDates(card.thruDate)}}
+                                <div class="col-4">
+                                </div>
+                                <div class="col-8 cardFront">
+                                    <div class="row d-flex justify-content-end pe-3">
+                                        <img src="./img/chipCardContactLess.png" alt="contactless">
+                                    </div>
+                                    <div class="contentVacio"></div>
+                                    <div class="contentVacio2"></div>
+                                    <p class="card__info pb-1 pe-3 text-end">{{card.cardHolder}}</p>
+                                    <div class="row mb-1 pe-3 d-flex justify-content-end" id="visaSignature2"
+                                        v-if="card.color === 'TITANIUM'">
+                                        <img src="./img/visaSignature.png" alt="visaSignature">
+                                    </div>
+                                    <div class="row mb-1 pe-3 d-flex justify-content-end" id="visaSignature2" v-else>
+                                        <img src="./img/visaLogo.png" alt="visaLogo">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card__back card__part"
+                            :class="{'titaniumBack' : card.color === 'TITANIUM', 'goldBack' : card.color === 'GOLD' , 'silverBack' : card.color === 'SILVER'}">
+                            <div class="card__space-25-dark "></div>
+
+                            <div class="card__space-75-back">
+                                <img src="./img/runebank.png" id="smallLogoBack">
+                                <!-- <div class="spaceWhite"></div> -->
+                                <div class="infoCard">
+                                    <p class="card_numer pt-3">{{card.number}}</p>
+                                    <p class="card__label fw-bold"><span class="fw-normal">CVV:</span> {{card.cvv}}</p>
+                                    <div class="card__label fw-bold">
+                                        <span class="fw-normal">Expires:</span>{{getExpiresDate(card.thruDate)}}
+                                        <div>
+                                            <span class="text-danger"
+                                                v-show="message == 'Expired Card'">{{message}}</span>
+                                            <span class="text-success"
+                                                v-show="message == 'Valid Card'">{{message}}</span>
+                                            <span class="text-warning"
+                                                v-show="message == 'Card about to expire'">{{message}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card__info2">
+                                    <p>This card is issued by Rune Bank limited persuant to license by Visa Ltd</p>
+                                    <p>USA: 1-800 324-4152 / Call collect: (1-303) 967-1098</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row col-xl-6 col-sm-12 col-12 gap-2 d-flex justify-content-center">
+                    <h3 class="text-center pt-2">Your Debit Cards</h3>
+                    <div class="card " v-for="card in cards.filter(card=> card.type=='DEBIT')">
+                        <div class="card__front card__part"
+                            :class="{'titaniumDebit' : card.color === 'TITANIUM', 'goldDebit' : card.color === 'GOLD' , 'silverDebit' : card.color === 'SILVER'}">
+                            <div class="row">
+                                <div class="col-4">
+                                </div>
+                                <div class="col-8 cardFront">
+                                    <div class="row d-flex justify-content-end pe-3">
+                                        <img src="./img/chipCardContactLess.png" alt="contactless">
+                                    </div>
+                                    <div class="contentVacio"></div>
+                                    <div class="contentVacio2"></div>
+                                    <p class="card__info pb-1 pe-3 text-end">{{card.cardHolder}}</p>
+                                    <div class="row mb-1 pe-3 d-flex justify-content-end" id="visaSignature2"
+                                        v-if="card.color === 'TITANIUM'">
+                                        <img src="./img/visaSignature.png" alt="visaSignature">
+                                    </div>
+                                    <div class="row mb-1 pe-3 d-flex justify-content-end" id="visaSignature2" v-else>
+                                        <img src="./img/visaLogo.png" alt="visaLogo">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card__back card__part"
+                            :class="{'titaniumDebitBack' : card.color === 'TITANIUM', 'goldDebitBack' : card.color === 'GOLD' , 'silverDebitBack' : card.color === 'SILVER'}">
+                            <div class="card__space-25-dark "></div>
+                            <div class="card__space-75-back">
+                                <img src="./img/runebankWhite.png" id="smallLogoBackWhite">
+                                <div class="infoCard">
+                                    <p class="card_numer pt-3">{{card.number}}</p>
+                                    <p class="card__label fw-bold"><span class="fw-normal">CVV:</span> {{card.cvv}}</p>
+                                    <div class="card__label fw-bold">
+                                        <span class="fw-normal">Expires:</span>{{getExpiresDate(card.thruDate)}}
+                                        <div>
+                                            <span class="text-danger"
+                                                v-if="message == 'Expired Card'">{{message}}</span>
+                                            <span class="text-success"
+                                                v-else-if="message == 'Valid Card'">{{message}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card__info2">
+                                    <p>This card is issued by Rune Bank limited persuant to license by Visa Ltd</p>
+                                    <p>USA: 1-800 324-4152 / Call collect: (1-303) 967-1098</p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <!-- <div class="row mt-5 col-12 d-flex justify-content-center gap-5 pb-5">
+                <h2 class="text-center">Your Rune account for 6 months bonus</h2>
+                <h4 class="text-center">Find which one is ideal for you</h4>
+
+                <div class="col-3 bg-light rounded ">
+                    <div class="bg-secondary2 mt-2">
+                        <h4 class="text-start ms-1 p-3">Titanium</h4>
+                    </div>
+                    <div>
+                        <ul class="listaTarjeta">
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50"
+                                    viewBox="0 0 50 50" style=" fill:#000000;">
+                                    <path
+                                        d="M 5 7 C 2.25 7 0 9.25 0 12 L 0 38 C 0 40.75 2.25 43 5 43 L 45 43 C 47.75 43 50 40.75 50 38 L 50 12 C 50 9.25 47.75 7 45 7 Z M 5 9 L 45 9 C 46.667969 9 48 10.332031 48 12 L 48 38 C 48 39.667969 46.667969 41 45 41 L 5 41 C 3.332031 41 2 39.667969 2 38 L 2 12 C 2 10.332031 3.332031 9 5 9 Z M 29.6875 19.40625 C 26.585938 19.40625 25 20.933594 25 22.875 C 25 26.386719 29.0625 25.914063 29.0625 27.71875 C 29.0625 28.023438 28.828125 28.75 27.125 28.75 C 25.417969 28.75 24.3125 28.09375 24.3125 28.09375 L 23.78125 30.46875 C 23.78125 30.46875 24.886719 31.09375 27 31.09375 C 29.113281 31.09375 32.03125 29.476563 32.03125 27.125 C 32.03125 24.296875 27.96875 24.074219 27.96875 22.8125 C 27.96875 22.167969 28.46875 21.6875 29.9375 21.6875 C 30.890625 21.6875 31.96875 22.40625 31.96875 22.40625 L 32.46875 19.96875 C 32.46875 19.96875 31.050781 19.40625 29.6875 19.40625 Z M 16.46875 19.625 L 13.78125 27.5625 C 13.78125 27.5625 13.597656 26.886719 13.53125 26.46875 C 11.996094 23.023438 9.5 21.75 9.5 21.75 L 11.875 30.75 L 15.125 30.75 L 19.625 19.625 Z M 20.78125 19.625 L 19.03125 30.75 L 22 30.75 L 23.78125 19.625 Z M 36.8125 19.625 L 31.96875 30.75 L 34.90625 30.75 L 35.5 29.15625 L 39.1875 29.15625 L 39.5 30.75 L 42.1875 30.75 L 39.90625 19.625 Z M 6.25 19.65625 C 6.25 19.65625 12.054688 21.453125 13.40625 25.8125 L 12.40625 20.75 C 12.40625 20.75 11.976563 19.65625 10.8125 19.65625 Z M 37.9375 22.84375 L 38.75 27.03125 L 36.3125 27.03125 Z">
+                                    </path>
+                                </svg>
+                                Credit Card Rune Visa Black
+                            </li>
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50"
+                                    viewBox="0 0 50 50" style=" fill:#000000;">
+                                    <path
+                                        d="M 5 7 C 2.25 7 0 9.25 0 12 L 0 38 C 0 40.75 2.25 43 5 43 L 45 43 C 47.75 43 50 40.75 50 38 L 50 12 C 50 9.25 47.75 7 45 7 Z M 5 9 L 45 9 C 46.667969 9 48 10.332031 48 12 L 48 38 C 48 39.667969 46.667969 41 45 41 L 5 41 C 3.332031 41 2 39.667969 2 38 L 2 12 C 2 10.332031 3.332031 9 5 9 Z M 29.6875 19.40625 C 26.585938 19.40625 25 20.933594 25 22.875 C 25 26.386719 29.0625 25.914063 29.0625 27.71875 C 29.0625 28.023438 28.828125 28.75 27.125 28.75 C 25.417969 28.75 24.3125 28.09375 24.3125 28.09375 L 23.78125 30.46875 C 23.78125 30.46875 24.886719 31.09375 27 31.09375 C 29.113281 31.09375 32.03125 29.476563 32.03125 27.125 C 32.03125 24.296875 27.96875 24.074219 27.96875 22.8125 C 27.96875 22.167969 28.46875 21.6875 29.9375 21.6875 C 30.890625 21.6875 31.96875 22.40625 31.96875 22.40625 L 32.46875 19.96875 C 32.46875 19.96875 31.050781 19.40625 29.6875 19.40625 Z M 16.46875 19.625 L 13.78125 27.5625 C 13.78125 27.5625 13.597656 26.886719 13.53125 26.46875 C 11.996094 23.023438 9.5 21.75 9.5 21.75 L 11.875 30.75 L 15.125 30.75 L 19.625 19.625 Z M 20.78125 19.625 L 19.03125 30.75 L 22 30.75 L 23.78125 19.625 Z M 36.8125 19.625 L 31.96875 30.75 L 34.90625 30.75 L 35.5 29.15625 L 39.1875 29.15625 L 39.5 30.75 L 42.1875 30.75 L 39.90625 19.625 Z M 6.25 19.65625 C 6.25 19.65625 12.054688 21.453125 13.40625 25.8125 L 12.40625 20.75 C 12.40625 20.75 11.976563 19.65625 10.8125 19.65625 Z M 37.9375 22.84375 L 38.75 27.03125 L 36.3125 27.03125 Z">
+                                    </path>
+                                </svg>
+                                Debit Card Rune Visa Black
+                            </li>
+                            <li>
+                                <i class='bx bxs-phone-call bx-lg'></i>
+                                Personalized attention
+                            </li>
+                            <li><i class='bx bxs-gift bx-lg'></i>Exclusive benefits</li>
+                            <li><i class='bx bxs-plane-take-off  bx-lg'></i>Travel assistance + Priority Pass Card</li>
+                            <li><i class='bx bx-bar-chart-alt-2 nav_icon bx-lg'></i>Prearranged Personal Loan ready to
+                                use
+                            </li>
+                            <li><i class='bx bx-cart bx-lg'></i>Authorized overdraft account service</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-3 bg-light rounded">
+                    <div class="bg-secondary2 mt-2">
+                        <h4 class="text-start ms-1 p-3">Silver</h4>
+                    </div>
+                    <div>
+                        <ul class="listaTarjeta">
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50"
+                                    viewBox="0 0 50 50" style=" fill:#000000;">
+                                    <path
+                                        d="M 5 7 C 2.25 7 0 9.25 0 12 L 0 38 C 0 40.75 2.25 43 5 43 L 45 43 C 47.75 43 50 40.75 50 38 L 50 12 C 50 9.25 47.75 7 45 7 Z M 5 9 L 45 9 C 46.667969 9 48 10.332031 48 12 L 48 38 C 48 39.667969 46.667969 41 45 41 L 5 41 C 3.332031 41 2 39.667969 2 38 L 2 12 C 2 10.332031 3.332031 9 5 9 Z M 29.6875 19.40625 C 26.585938 19.40625 25 20.933594 25 22.875 C 25 26.386719 29.0625 25.914063 29.0625 27.71875 C 29.0625 28.023438 28.828125 28.75 27.125 28.75 C 25.417969 28.75 24.3125 28.09375 24.3125 28.09375 L 23.78125 30.46875 C 23.78125 30.46875 24.886719 31.09375 27 31.09375 C 29.113281 31.09375 32.03125 29.476563 32.03125 27.125 C 32.03125 24.296875 27.96875 24.074219 27.96875 22.8125 C 27.96875 22.167969 28.46875 21.6875 29.9375 21.6875 C 30.890625 21.6875 31.96875 22.40625 31.96875 22.40625 L 32.46875 19.96875 C 32.46875 19.96875 31.050781 19.40625 29.6875 19.40625 Z M 16.46875 19.625 L 13.78125 27.5625 C 13.78125 27.5625 13.597656 26.886719 13.53125 26.46875 C 11.996094 23.023438 9.5 21.75 9.5 21.75 L 11.875 30.75 L 15.125 30.75 L 19.625 19.625 Z M 20.78125 19.625 L 19.03125 30.75 L 22 30.75 L 23.78125 19.625 Z M 36.8125 19.625 L 31.96875 30.75 L 34.90625 30.75 L 35.5 29.15625 L 39.1875 29.15625 L 39.5 30.75 L 42.1875 30.75 L 39.90625 19.625 Z M 6.25 19.65625 C 6.25 19.65625 12.054688 21.453125 13.40625 25.8125 L 12.40625 20.75 C 12.40625 20.75 11.976563 19.65625 10.8125 19.65625 Z M 37.9375 22.84375 L 38.75 27.03125 L 36.3125 27.03125 Z">
+                                    </path>
+                                </svg>
+                                Credit Card Rune Visa Silver
+                            </li>
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50"
+                                    viewBox="0 0 50 50" style=" fill:#000000;">
+                                    <path
+                                        d="M 5 7 C 2.25 7 0 9.25 0 12 L 0 38 C 0 40.75 2.25 43 5 43 L 45 43 C 47.75 43 50 40.75 50 38 L 50 12 C 50 9.25 47.75 7 45 7 Z M 5 9 L 45 9 C 46.667969 9 48 10.332031 48 12 L 48 38 C 48 39.667969 46.667969 41 45 41 L 5 41 C 3.332031 41 2 39.667969 2 38 L 2 12 C 2 10.332031 3.332031 9 5 9 Z M 29.6875 19.40625 C 26.585938 19.40625 25 20.933594 25 22.875 C 25 26.386719 29.0625 25.914063 29.0625 27.71875 C 29.0625 28.023438 28.828125 28.75 27.125 28.75 C 25.417969 28.75 24.3125 28.09375 24.3125 28.09375 L 23.78125 30.46875 C 23.78125 30.46875 24.886719 31.09375 27 31.09375 C 29.113281 31.09375 32.03125 29.476563 32.03125 27.125 C 32.03125 24.296875 27.96875 24.074219 27.96875 22.8125 C 27.96875 22.167969 28.46875 21.6875 29.9375 21.6875 C 30.890625 21.6875 31.96875 22.40625 31.96875 22.40625 L 32.46875 19.96875 C 32.46875 19.96875 31.050781 19.40625 29.6875 19.40625 Z M 16.46875 19.625 L 13.78125 27.5625 C 13.78125 27.5625 13.597656 26.886719 13.53125 26.46875 C 11.996094 23.023438 9.5 21.75 9.5 21.75 L 11.875 30.75 L 15.125 30.75 L 19.625 19.625 Z M 20.78125 19.625 L 19.03125 30.75 L 22 30.75 L 23.78125 19.625 Z M 36.8125 19.625 L 31.96875 30.75 L 34.90625 30.75 L 35.5 29.15625 L 39.1875 29.15625 L 39.5 30.75 L 42.1875 30.75 L 39.90625 19.625 Z M 6.25 19.65625 C 6.25 19.65625 12.054688 21.453125 13.40625 25.8125 L 12.40625 20.75 C 12.40625 20.75 11.976563 19.65625 10.8125 19.65625 Z M 37.9375 22.84375 L 38.75 27.03125 L 36.3125 27.03125 Z">
+                                    </path>
+                                </svg>
+                                Debit Card Rune Visa Silver
+                            </li>
+                            <li>
+                                <i class='bx bxs-phone-call bx-lg'></i>
+                                Personalized attention
+                            </li>
+                            <li><i class='bx bxs-gift bx-lg'></i>Exclusive benefits</li>
+                            <li><i class='bx bxs-plane-take-off  bx-lg'></i>Travel assistance</li>
+                            <li><i class='bx bx-bar-chart-alt-2 nav_icon bx-lg'></i>Prearranged Personal Loan ready to
+                                use
+                            </li>
+                            <li><i class='bx bx-cart bx-lg'></i>Authorized overdraft account service</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-3 bg-light rounded ">
+                    <div class="bg-secondary2 mt-2">
+                        <h4 class="text-start ms-1 p-3">Gold</h4>
+                    </div>
+                    <div>
+                        <ul class="listaTarjeta">
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50"
+                                    viewBox="0 0 50 50" style=" fill:#000000;">
+                                    <path
+                                        d="M 5 7 C 2.25 7 0 9.25 0 12 L 0 38 C 0 40.75 2.25 43 5 43 L 45 43 C 47.75 43 50 40.75 50 38 L 50 12 C 50 9.25 47.75 7 45 7 Z M 5 9 L 45 9 C 46.667969 9 48 10.332031 48 12 L 48 38 C 48 39.667969 46.667969 41 45 41 L 5 41 C 3.332031 41 2 39.667969 2 38 L 2 12 C 2 10.332031 3.332031 9 5 9 Z M 29.6875 19.40625 C 26.585938 19.40625 25 20.933594 25 22.875 C 25 26.386719 29.0625 25.914063 29.0625 27.71875 C 29.0625 28.023438 28.828125 28.75 27.125 28.75 C 25.417969 28.75 24.3125 28.09375 24.3125 28.09375 L 23.78125 30.46875 C 23.78125 30.46875 24.886719 31.09375 27 31.09375 C 29.113281 31.09375 32.03125 29.476563 32.03125 27.125 C 32.03125 24.296875 27.96875 24.074219 27.96875 22.8125 C 27.96875 22.167969 28.46875 21.6875 29.9375 21.6875 C 30.890625 21.6875 31.96875 22.40625 31.96875 22.40625 L 32.46875 19.96875 C 32.46875 19.96875 31.050781 19.40625 29.6875 19.40625 Z M 16.46875 19.625 L 13.78125 27.5625 C 13.78125 27.5625 13.597656 26.886719 13.53125 26.46875 C 11.996094 23.023438 9.5 21.75 9.5 21.75 L 11.875 30.75 L 15.125 30.75 L 19.625 19.625 Z M 20.78125 19.625 L 19.03125 30.75 L 22 30.75 L 23.78125 19.625 Z M 36.8125 19.625 L 31.96875 30.75 L 34.90625 30.75 L 35.5 29.15625 L 39.1875 29.15625 L 39.5 30.75 L 42.1875 30.75 L 39.90625 19.625 Z M 6.25 19.65625 C 6.25 19.65625 12.054688 21.453125 13.40625 25.8125 L 12.40625 20.75 C 12.40625 20.75 11.976563 19.65625 10.8125 19.65625 Z M 37.9375 22.84375 L 38.75 27.03125 L 36.3125 27.03125 Z">
+                                    </path>
+                                </svg>
+                                Credit Card Rune Visa Gold
+                            </li>
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50"
+                                    viewBox="0 0 50 50" style=" fill:#000000;">
+                                    <path
+                                        d="M 5 7 C 2.25 7 0 9.25 0 12 L 0 38 C 0 40.75 2.25 43 5 43 L 45 43 C 47.75 43 50 40.75 50 38 L 50 12 C 50 9.25 47.75 7 45 7 Z M 5 9 L 45 9 C 46.667969 9 48 10.332031 48 12 L 48 38 C 48 39.667969 46.667969 41 45 41 L 5 41 C 3.332031 41 2 39.667969 2 38 L 2 12 C 2 10.332031 3.332031 9 5 9 Z M 29.6875 19.40625 C 26.585938 19.40625 25 20.933594 25 22.875 C 25 26.386719 29.0625 25.914063 29.0625 27.71875 C 29.0625 28.023438 28.828125 28.75 27.125 28.75 C 25.417969 28.75 24.3125 28.09375 24.3125 28.09375 L 23.78125 30.46875 C 23.78125 30.46875 24.886719 31.09375 27 31.09375 C 29.113281 31.09375 32.03125 29.476563 32.03125 27.125 C 32.03125 24.296875 27.96875 24.074219 27.96875 22.8125 C 27.96875 22.167969 28.46875 21.6875 29.9375 21.6875 C 30.890625 21.6875 31.96875 22.40625 31.96875 22.40625 L 32.46875 19.96875 C 32.46875 19.96875 31.050781 19.40625 29.6875 19.40625 Z M 16.46875 19.625 L 13.78125 27.5625 C 13.78125 27.5625 13.597656 26.886719 13.53125 26.46875 C 11.996094 23.023438 9.5 21.75 9.5 21.75 L 11.875 30.75 L 15.125 30.75 L 19.625 19.625 Z M 20.78125 19.625 L 19.03125 30.75 L 22 30.75 L 23.78125 19.625 Z M 36.8125 19.625 L 31.96875 30.75 L 34.90625 30.75 L 35.5 29.15625 L 39.1875 29.15625 L 39.5 30.75 L 42.1875 30.75 L 39.90625 19.625 Z M 6.25 19.65625 C 6.25 19.65625 12.054688 21.453125 13.40625 25.8125 L 12.40625 20.75 C 12.40625 20.75 11.976563 19.65625 10.8125 19.65625 Z M 37.9375 22.84375 L 38.75 27.03125 L 36.3125 27.03125 Z">
+                                    </path>
+                                </svg>
+                                Debit Card Rune Visa Gold
+                            </li>
+                            <li><i class='bx bxs-gift bx-lg'></i>Exclusive benefits</li>
+                            <li><i class='bx bxs-plane-take-off  bx-lg'></i>Travel assistance</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div> -->
+
+            <!-- <div class="row d-flex justify-content-center">
+                <div class="row col-9">
+                    <div class="col-3 d-flex justify-content-center ">
+                        <div class="bg-light rounded mt-2 me-1 p-3 pb-5 mb-4">
+                            <div class="col-4"><img src="./img/card.png"></div>
+                            <div class="col-8 ">
+                                <h4 class="text-center">Pay your way</h4>
+                                <p class="text-center">You will be able to pay online or in stores by scanning the QR
+                                    from
+                                    this App (We are working on this).</p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-4 ">
+                        <div class="row bg-light rounded mt-2 me-1 p-3 imgInfos d-flex justify-content-center">
+                            <div class="col-4"><img src="./img/app.png"></div>
+                            <div class="col-8">
+                                <h4>Stay online</h4>
+                                <p>Recharge your cell phone 24 hours a day from Online Banking and the App.</p>
+                            </div>
+                        </div>
+                        <div class="row bg-light rounded mt-2 me-1 p-3 imgInfos">
+                            <div class="col-4"><img src="./img/streaming.png"></div>
+                            <div class="col-8">
+                                <h4>Enjoy music and series</h4>
+                                <p>Pay the subscription to your favorite streaming platforms.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="row bg-light rounded mt-2 me-1 p-3 imgInfos">
+                            <div class="col-4"><img src="./img/invertir.png"></div>
+                            <div class="col-8">
+                                <h4>Invest your savings</h4>
+                                <p>You can invest from $300 in a very simple way and obtain excellent returns.</p>
+                            </div>
+
+                        </div>
+                        <div class="row bg-light rounded mt-2 me-1 p-3 d-flex imgInfos">
+                            <div class="col-4"><img src="./img/delivery.png"></div>
+                            <div class="col-8">
+                                <h4>Delivery</h4>
+                                <p>Pay for the orders you make through your favorite shipping app.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div> -->
+
+            <div class="row d-flex justify-content-center pb-3 pt-5 gap-5">
+                <button class="btn btn-warning w-25"><a class="aId  text-light" href="./user.html"><i
+                            class='bx bxs-dashboard'></i>Manage your Cards</a>
+                </button>
+                <button class="btn btn-warning w-25 btnnn"><a class="aId" href="./create-cards.html"><i
+                            class='bx bx-credit-card'></i>Request a New Card</a>
+                </button>
+            </div>
+
+
+
+            <!-- <div class="row bg-primary m-1" v-for="card in cards">
+
+                                <div class="col-9">
+                                    <span class="d-block">{{card.type}} CARD / {{card.color}}</span>
+                                    <span class="d-block">Number: {{card.number}}</span>
+                                    <span class="d-block">Thru Date: {{getExpiresDate(card.thruDate)}} </span>
+                                    <span class="d-block">{{compareDates(card)}}</span>
+                                    <span>{{message}}</span>
+                                </div>
+                                <div class="col-3 d-flex align-items-center">
+                                    <button class="btn btn-success"
+                                        v-if="message == 'Card about to expire' || message == 'Expired Card'"
+                                        @click="renewCard(card)">Renew</button>
+                                    <button class="btn btn-danger" v-else @click="deleteCard(card)">Delete</button>
+                                </div>
+
+                            </div> -->
+
+
+
+
+        </main>
+        <!--Container Main end-->
+    </div>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="./data/cards.js"></script>
+
+
+
+
+</body>
+
+</html>

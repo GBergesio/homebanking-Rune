@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href="./styles.css" rel="stylesheet">
+
+  <title>Homebanking</title>
+</head>
+
+<body>
+
+
+  <main id="app">
+    <div class="row">
+
+      <h1>Homebanking</h1>
+
+      <!-- <div><p>{{currentDateTime()}} usuario!</p></div> -->
+
+      <div class="col-8">
+        <div>
+          <h4>Client Manager</h4>
+          <form>
+            <div class="mb-3">
+              <label for="nameImput2" class="form-label">First Name</label>
+              <input type="text" class="form-control" id="nameImput2" v-model="firstName" required>
+            </div>
+            <div class="mb-3">
+              <label for="lastNameImput2" class="form-label">Last Name</label>
+              <input type="text" class="form-control" id="lastNameImput2" v-model="lastName" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleInputEmail12" class="form-label">Email Address</label>
+              <input type="email" class="form-control" id="exampleInputEmail12" aria-describedby="emailHelp"
+                v-model="email" required>
+              <div id="emailHelp" class="form-text">Enter your Email Address</div>
+            </div>
+            <button type="submit" class="btn btn-success" @click="addClient()">Add client</button>
+          </form>
+          <h3>Client List</h3>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Delete</th>
+                <th scope="col">Modify</th>
+                <th scope="col">Manage Accounts</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="cliente in datos">
+                <td>{{cliente.firstName}}</td>
+                <td>{{cliente.lastName}}</td>
+                <td>{{cliente.email}}</td>
+                <td>
+                  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#botonEliminar"
+                    @click="takeClient(cliente)">Delete Client</button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#botonEditar"
+                    @click="takeClient(cliente)">Edit Client</button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#botonCuenta"
+                    @click="takeClient(cliente)">Edit Account</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Modal cliente eliminado-->
+        <div class="modal fade" id="botonEliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete Client</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                Are you sure you want to remove the client?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary"
+                  @click="deleteClient(urlClienteSeleccionado)">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal cliente eliminado-->
+
+        <!-- Modal cuentas clientes -->
+        <div class="modal fade" id="botonCuenta" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Accounts</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div v-for="account in clienteSeleccionado.accounts" class="row">
+                  
+                  <div class="col-6"><p>Account Number: {{account.number}}</p></div>
+                  <div class="col-4"><p>Balance: ${{account.balance}}</p></div>
+                  <div class="col-2"><button class="btn" disabled>Editar</button></div>
+
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger"  @click="deleteClient(urlClienteSeleccionado)">Delete All Accounts</button>
+                <button type="submit" class="btn btn-success" @click="editClient(url)">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal cuentas clientes -->
+
+        <!-- Modal edicion cliente-->
+        <div class="modal fade" id="botonEditar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Client</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="mb-3">
+                    <label for="nameImputEdit" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="nameImputEdit" :value="clienteSeleccionado.firstName"
+                      required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="lastNameImputEdit" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="lastNameImputEdit" :value="clienteSeleccionado.lastName"
+                      required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="inputEmailEdit" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="inputEmailEdit" :value="clienteSeleccionado.email"
+                      aria-describedby="emailHelp" required>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success" @click="editClient(urlClienteSeleccionado)">Save changes</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal edicion cliente-->
+
+
+      </div>
+
+      <div class="col-4 restResponse">
+        <h3>Client REST Response</h3>
+        <pre>{{datos}}</pre>
+      </div>
+
+    </div>
+
+
+
+  </main>
+
+
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/vue@3"></script>
+  <script src="./manager.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

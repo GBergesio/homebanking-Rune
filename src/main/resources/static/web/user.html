@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css' rel='stylesheet'>
+    <link href="./styles/style.css" rel="stylesheet">
+    <link href="./styles/user.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,800;1,200;1,300;1,400;1,500&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Homebanking - My Profile</title>
+</head>
+
+
+<body id="body-pd">
+    <div id="app">
+        <header class="header" id="header">
+            <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+            <div class="header_img_logo slide-in-blurred-top"><img src="./img/runebank.png" alt="Logo"></div>
+            <!-- <button class="btn"> <div class="header_img"><h5>{{initials}}</h5></div></button> -->
+            <div class="menu">
+                <ul class="d-flex justify-content-end">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <div class="header_img d-none d-sm-block">
+                                <h5 v-cloak>{{initials}}</h5>
+                            </div>
+                            <!-- <img src="assets/images/avatar/avatar-1.png" alt=""> -->
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#"><i class="fa fa-user size-icon-1"></i>
+                                <span>My Profile</span></a>
+                            <!-- <a class="dropdown-item" href="settings.html"><i class="fa fa-cog size-icon-1"></i>
+                            <span>Settings</span></a> -->
+                            <hr class="dropdown-divider">
+                            <a class="dropdown-item" href="#" @click="logout"><i class="bx bx-exit  size-icon-1"></i>
+                                <span>SignOut</span></a>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </header>
+
+        <div class="l-navbar" id="nav-bar">
+            <nav class="nav">
+                <div>
+                    <a href="./accounts.html" class="nav_logo"><i class='bx bxs-bank' style='color:#ffffff'></i><span
+                            class="nav_logo-name">Rune Bank</span></a>
+                    <div class="nav_list">
+                        <a href="./accounts.html" class="nav_link"><i class='bx bx-wallet'></i><span
+                                class="nav_name">Accounts</span></a>
+                        <a href="./cards.html" class="nav_link"><i class='bx bx-credit-card-alt'></i><span
+                                class="nav_name">Cards</span></a>
+                        <a href="./transfers.html" class="nav_link "><i class='bx bx-transfer'></i><span
+                                class="nav_name">Transfers</span></a>
+                        <a href="./loan-application.html" class="nav_link"><i
+                                class='bx bx-bar-chart-alt-2 nav_icon'></i><span class="nav_name">
+                                Loans</span></a>
+                        <a href="../payOut/payOut.html" class="nav_link"><i class='bx bx-money-withdraw'></i><span
+                                class="nav_name">Payments</span></a>
+                        <a href="#" class="nav_link"><i class='bx bx-user nav_icon'></i><span
+                                class="nav_name">User</span></a>
+                    </div>
+                </div>
+                <a href="#" class="nav_link" @click="logout"><i class='bx bx-log-out nav_icon'></i><span
+                        class="nav_name">SignOut</span></a>
+            </nav>
+        </div>
+
+        <main class="fade-in-fwd">
+            <div class="row d-flex justify-content-center">
+                <div class="pt-5 w-100 gap-3 d-flex justify-content-center">
+                    <div class="infoClientCard p-5 pt-4 col-xl-3 col-sm-12">
+                        <h4 class="text-center pb-1">Client</h4>
+                        <h6> {{infoClient}} </h6>
+                        <h6>Email: {{this.client.email}} </h6>
+                    </div>
+                    <div class="infoClientCard p-5 pt-4 col-xl-3 col-sm-12">
+                        <h4 class="text-center pb-1">Accounts Active</h4>
+                        <div v-for="account in accounts">
+                            <h5>{{account.number}} <span class="spanAccount"><b>Savings Account</b></span></h5>
+                            <h6 class="ending">Actual Balance:
+                                <span v-show="account.balance > '0'" class="text-success">${{account.balance}}</span>
+                                <span v-show="account.balance == '0'" class="text-warning">${{account.balance}}</span>
+                            </h6>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button class="btn btn-purple" data-bs-toggle="modal" data-bs-target="#modalAccounts">Manage
+                                Accounts</button>
+                        </div>
+                    </div>
+                    <div class="infoClientCard p-5 pt-4 col-xl-3 col-sm-12">
+                        <h4 class="text-center pb-1">Cards Active</h4>
+                        <div v-for="card in cards">
+                            <h5>Visa <span v-if="card.type == 'CREDIT'"><b>Credit</b></span><span
+                                    v-else><b>Debit</b></span>
+                                Card</h5>
+                            <h6 class="ending">Ending {{card.number.toString().slice(-4)}}</h6>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-end">
+                            <button class="btn btn-purple" data-bs-toggle="modal" data-bs-target="#modalCards">Manage
+                                Cards
+                            </button>
+                        </div>
+                    </div>
+                    <div class="infoClientCard p-5 pt-4 col-xl-3 col-sm-12">
+                        <h4 class="text-center pb-1">Loans Active</h4>
+                        <div v-for="loan in loans">
+                            <h5>{{loan.name}}</h5>
+                            <h6 class="ending">${{loan.amount}} - Payments: {{loan.payments}}</h6>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-end">
+                            <button class="btn btn-purple" disabled>Pay Loan (Currently disabled)</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- Modal Accounts-->
+        <div class="modal fade " id="modalAccounts" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog ">
+                <div class="modal-content bg-purple">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Manage Accounts | Delete your Accounts</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body ">
+                        <div v-for="account in accounts"
+                            class="rounded bg-light m-2 p-2 d-flex align-items-center justify-content-between">
+                            <div>
+                                <h4 class="pt-1 text-dark">Account: {{account.number}}
+                                </h4>
+                                <h6 class=" text-dark"> <b class="typeAccount">Savings Account</b></h6>
+                                <h6 class=" text-dark">Actual Balance:
+                                    <span v-show="account.balance > '0'" class="text-success">${{account.balance}} <span
+                                            class="text-danger">You cannot delete this account because it has a positive
+                                            balance</span></span>
+                                    <span v-show="account.balance == '0'"
+                                        class="text-warning">${{account.balance}}</span>
+                                </h6>
+                            </div>
+                            <button class="btn btn-danger" @click="deleteAccount(account)">Delete</button>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Cards-->
+        <div class="modal fade " id="modalCards" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog ">
+                <div class="modal-content bg-purple">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Manage Card | Renew or Delete your cards</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body ">
+                        <div v-for="card in cards"
+                            class="rounded bg-light m-2 p-2 d-flex align-items-center justify-content-between">
+                            <div>
+                                <h4 class="pt-1 text-dark">Visa <span v-if="card.type == 'CREDIT'"><b>Credit
+                                            Card</b></span> <span v-else><b>Debit Card</b></span>
+                                </h4>
+                                <h6 class=" text-dark">Card Number: {{card.number}}</h6>
+                                <h6 class=" text-dark">Thru Date: {{getExpiresDate(card.thruDate)}} |
+                                    <span class="text-danger"
+                                        v-show="message == 'Expired Card'">{{compareDates(card)}}</span>
+                                    <span class="text-warning"
+                                        v-show="message == 'Card about to expire'">{{compareDates(card)}}</span>
+                                    <span class="text-success"
+                                        v-show="message == 'Valid Card'">{{compareDates(card)}}</span>
+                                </h6>
+                            </div>
+                            <div v-if="message == 'Card about to expire' || message == 'Expired Card'">
+                                <button class="btn btn-success me-2" @click="renewCard(card)">Renew</button>
+                                <button class="btn btn-danger" @click="deleteCard(card)">Delete</button>
+                            </div>
+                            <button class="btn btn-danger" v-else @click="deleteCard(card)">Delete</button>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="./data/user.js"></script>
+    <script src="sweetalert2.all.min.js"></script>
+
+</body>
+
+</html>

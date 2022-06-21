@@ -1,0 +1,366 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.card {
+    width: 190px; 
+    height: 320px;
+    -webkit-perspective: 600px;
+    -moz-perspective: 600px;
+    perspective: 600px;
+    background: none;
+    border: none;
+  
+  }
+  
+
+.card__part {
+    box-shadow: 1px 1px #aaa3a3;
+    top: 0;
+    position: absolute;
+    z-index: 1000;
+    left: 0;
+    display: inline-block;
+    width: 190px ;
+    height: 320px;
+    /* background-image: url('https://image.ibb.co/bVnMrc/g3095.png'), linear-gradient(to right bottom, #fd696b, #fa616e, #f65871, #f15075, #ec4879); */
+    /*linear-gradient(to right bottom, #fd8369, #fc7870, #f96e78, #f56581, #ee5d8a)*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 8px;
+    -webkit-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -moz-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -ms-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -o-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+}
+
+.gold{
+  background-image: url('https://i.imgur.com/EaXUpf4.png');
+}
+
+.silver{
+  background-image: url('https://i.imgur.com/r2OvEfH.png');
+}
+
+.titanium{
+  background-image: url('https://i.imgur.com/SL3Xcax.png');
+}
+
+.silverDebit{
+  background-image: url('https://i.imgur.com/E8rDIvR.png');
+}
+
+.goldDebit{
+  background-image: url('https://i.imgur.com/5MBcHxW.png');
+}
+
+.titaniumDebit{
+  background-image: url('https://i.imgur.com/9TbY00Y.png');
+}
+
+.silverBack{
+  background-image: url('https://img.freepik.com/foto-gratis/fondo-textura-metalizada_53876-89543.jpg?w=1380&t=st=1652727099~exp=1652727699~hmac=b7d4a5691da57d57e1b78d5a77e14dda96ad8fa9098621315eac7f9017a199a6');
+}
+
+.goldBack{
+  background-image: url('https://wallpaperaccess.com/full/2559373.jpg');
+}
+
+.titaniumBack{
+  background-image: url('https://img.freepik.com/foto-gratis/textura-negra_1205-327.jpg');
+}
+
+.silverDebitBack{
+  background-image: url('https://weareinfrared.com/wp-content/uploads/2018/04/purple-gradient.png');
+}
+
+.goldDebitBack{
+  background-image: url('https://weareinfrared.com/wp-content/uploads/2018/04/purple-gradient.png');
+}
+
+.titaniumDebitBack{
+  background-image: url('https://weareinfrared.com/wp-content/uploads/2018/04/purple-gradient.png');
+}
+
+
+
+
+
+  
+  .card__front {
+    padding-top: 18px ;
+    padding-bottom: 18px ;
+    padding-right: 2px;
+    padding-left: 2px ;
+    -webkit-transform: rotateY(0);
+    -webkit-transform: rotateY(0);
+    -moz-transform: rotateY(0);
+  }
+  
+  .card__back {
+    -webkit-transform: rotateY(-180deg);
+    -moz-transform: rotateY(-180deg);
+  }
+  
+  .card__black-line {
+    margin: 1px 1px 2px 12px;
+    height: 100%;
+    width: 2rem;
+    background-color: #303030;
+  }
+  
+  .card__logo {
+    height: 16px;
+  }
+  
+  .card__front-logo {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+  }
+  
+  .card__square {
+    border-radius: 5px;
+    height: 30px;
+  }
+  
+  .infoCard{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: .5rem;
+  }
+  
+  .infoCard p{
+    font-size: 1.3rem;
+  }
+  
+  .infoCard p:nth-child(2){
+    font-size: .7rem;
+  }
+  
+  .card_numer {
+    /* display: block; */
+    width: 50%;
+    word-spacing: 4px;
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: #fff;
+    text-align: right;
+    /* margin-bottom: 20px;
+    margin-top: 20px; */
+  }
+  
+  .contentVacio{
+
+    content: " ";
+    height: 70%;
+  }
+  .contentVacio2{
+
+    content: " ";
+    height: 60%;
+  }
+
+
+  .cardFront img:nth-child(1){
+    width: 6rem;
+  }
+  
+
+  #visaSignature2 img{
+  margin-top: .1rem;
+  width: 4.4rem;
+
+  }
+
+  .card__space-75-back {
+    padding-left: 1rem;
+    width: 75%;
+    float: left;
+  }
+  
+  .card__space-25-dark {
+    content: " ";
+    margin-left: .5rem;
+    width: 20%;
+    height: 100%;
+    float: left;
+    background-color: #303030;
+  }
+  
+  .card__label {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 1px;
+  }
+  
+  .card__info {
+    padding-left: 10px;
+    margin-bottom: 0;
+    margin-top: 5px;
+    font-size: 16px;
+    line-height: 18px;
+    color: #fff;
+    letter-spacing: 1px;
+    /* text-transform: uppercase; */
+  }
+  
+  .card__info2 {
+    margin-top: 1.3rem;
+    font-size: .3rem;
+    /* line-height: 1rem; */
+    color: #fff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  
+  .card__info2 span{
+    color: #ffd861;
+    font-size: .4rem;
+  }
+  
+  .card__back-content {
+  
+    margin: 0px 0px 0px 50px;
+    height: 100%;
+    width: 2rem;
+    background-color: blue;
+  }
+  
+  .card__secret--last {
+    color: #303030;
+    text-align: right;
+    margin: 0;
+    font-size: 14px;
+  }
+  
+  .card__secret {
+    padding: 5px 12px;
+    background-color: #fff;
+    position: relative;
+  }
+  
+  .card__secret:before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    height: calc(100% + 6px);
+    width: calc(100% - 42px);
+    border-radius: 4px;
+    background: repeating-linear-gradient(45deg, #ededed, #ededed 5px, #f9f9f9 5px, #f9f9f9 10px);
+  }
+  
+  .card__back-logo {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+  }
+  
+  .card__back-square {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+  }
+  
+  .card:hover .card__front {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+  
+  }
+  
+  .card:hover .card__back {
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+  }
+  
+  #blackLineCard{
+    background-color: #303030;
+    height: 100%;
+    width: 20%;
+    margin-left: 1rem;
+    color: white;
+  }
+  
+  #infoLineCard{
+    height: 100%;
+    width: 20%;
+    margin-left: 5rem;
+    color: white;
+  }
+  
+  #smallLogoBack{
+    width: 5.5rem;
+    margin-top: .2rem;
+    margin-left: .7rem;
+  }
+
+  #smallLogoBackWhite{
+    width: 5.5rem;
+    margin-top: .2rem;
+    margin-left: .7rem;
+  }
+  
+  .spaceWhite{
+    content: " ";
+    background: repeating-linear-gradient(45deg, #ededed, #ededed 5px, #f9f9f9 5px, #f9f9f9 10px);
+    margin-top: .3rem;
+    width: 88%;
+    height: 1.8rem;
+  }
+
+
+  .rounded{
+    border-radius: 10px!important;
+  }
+  .bg-secondary2{
+    background-color: #d4d4d4;
+  }
+
+
+
+  .listaTarjeta li{
+    display: flex;
+    border-bottom: 1.3px solid  rgb(184, 184, 184);
+    margin-right: 1rem;
+    padding: .9rem;
+    list-style: none;
+    align-items: center;
+    gap: 1rem;  
+  }
+
+  .imgInfos img{
+    width: 7rem;
+
+  }
+
+  .imgInfos{
+    display: flex;
+    align-items: center;
+  }
+
+  .btnnn{
+    background-color: #705b9e;
+    border: 1px solid #705b9e;
+  }
+
+  .btnnn a{
+    color: white!important;
+  }
+
+  .btnnn:hover{
+    background-color: #a08ccf;
+    border: 1px solid #a08ccf;
+  }
+
+

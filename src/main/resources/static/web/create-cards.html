@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css' rel='stylesheet'>
+    <link href="./styles/style.css" rel="stylesheet">
+    <link href="./styles/create-cards.css" rel="stylesheet">
+    <link href="./styles/cards.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,800;1,200;1,300;1,400;1,500&display=swap"
+        rel="stylesheet">
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Homebanking - Create Cards</title>
+</head>
+
+<body id="body-pd">
+    <div id="app">
+
+
+        <header class="header" id="header">
+            <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+            <div class="header_img_logo slide-in-blurred-top"><img src="./img/runebank.png" alt="Logo"></div>
+            <!-- <button class="btn"> <div class="header_img"><h5>{{initials}}</h5></div></button> -->
+            <div class="menu">
+                <ul class="d-flex justify-content-end">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <div class="header_img d-none d-sm-block">
+                                <h5 v-cloak>{{initials}}</h5>
+                            </div>
+                            <!-- <img src="assets/images/avatar/avatar-1.png" alt=""> -->
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="./user.html"><i class="fa fa-user size-icon-1"></i>
+                                <span>My Profile</span></a>
+                            <!-- <a class="dropdown-item" href="settings.html"><i class="fa fa-cog size-icon-1"></i>
+                                <span>Settings</span></a> -->
+                            <hr class="dropdown-divider">
+                            <a class="dropdown-item" href="#" @click="logout"><i class="bx bx-exit  size-icon-1"></i>
+                                <span>SignOut</span></a>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </header>
+
+        <div class="l-navbar" id="nav-bar">
+            <nav class="nav">
+                <div>
+                    <a href="./accounts.html" class="nav_logo"><i class='bx bxs-bank' style='color:#ffffff'></i><span
+                            class="nav_logo-name">Rune Bank</span></a>
+                    <div class="nav_list">
+                        <a href="./accounts.html" class="nav_link"><i class='bx bx-wallet'></i><span
+                                class="nav_name">Accounts</span></a>
+                        <a href="./cards.html" class="nav_link active"><i class='bx bx-credit-card-alt'></i><span
+                                class="nav_name">Cards</span></a>
+                        <a href="./transfers.html" class="nav_link"><i class='bx bx-transfer'></i><span
+                                class="nav_name">Transfers</span></a>
+                        <a href="#" class="nav_link"><i class='bx bx-bar-chart-alt-2 nav_icon'></i><span
+                                class="nav_name">
+                                Loans</span></a>
+                        <a href="../payOut/payOut.html" class="nav_link"><i class='bx bx-money-withdraw'></i><span
+                                class="nav_name">Payments</span></a>
+                        <a href="./user.html" class="nav_link"><i class='bx bx-user nav_icon'></i><span
+                                class="nav_name">User</span></a>
+                    </div>
+                </div>
+                <a href="#" class="nav_link" @click="logout"><i class='bx bx-log-out nav_icon'></i><span
+                        class="nav_name">SignOut</span></a>
+            </nav>
+        </div>
+
+        <main class="fade-in-fwd">
+
+            <div class="ps-3 pt-5 welcome">
+                <h2>{{infoClient}}</h2>
+
+            </div>
+
+            <div class="container-fluid">
+                <section>
+                    <div class="row">
+                        <div class="col-12 mt-3 mb-1">
+                            <h4 class="text-uppercase">Quick Access</h4>
+                        </div>
+                    </div>
+                    <div class="row" id="aRune">
+                        <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                            <div>
+                                <a href="./accounts.html" class="cardQuickAccess qAviolet">
+                                    <div class="overlay"></div>
+                                    <p><i class='bx bx-wallet'></i> Accounts</p>
+
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                            <div>
+                                <a href="../payOut/payOut.html" class="cardQuickAccess qAgreen">
+                                    <div class="overlay"></div>
+                                    <p><i class='bx bx-money-withdraw'></i> Payments</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                            <div>
+                                <a href="#" class="cardQuickAccess qAblue">
+                                    <div class="overlay"></div>
+                                    <p><i class='bx bx-bar-chart-alt-2 nav_icon'></i> Loans</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                            <div>
+                                <a href="#" class="cardQuickAccess qAyellow">
+                                    <div class="overlay"></div>
+                                    <p><i class='bx bx-transfer'></i> Transfers</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- REQUEST CARD SECTION -->
+            <div class="limiter ">
+
+                <div class="container-card100">
+
+                    <div class="wrap-login100 fadeOut pb-3">
+                        <span class="card100-form-title">
+                            Request New Card
+                        </span>
+
+                        <form class="login100-form validate-form" @submit.prevent="createCard">
+
+                            <div class="wrap-input100 validate-input" data-validate="Password is required">
+                                <h5>Type Card</h5>
+                                <h6 class="card-title mb-3">Select from the following options</h6>
+                                <div class="box pt-0">
+                                    <input type="radio" name="select" id="value-4" v-model="cardType" value="CREDIT"
+                                        @click="creditIsHidden = isHidden" v-if="allCreditCards.length < 3">
+                                    <input type="radio" name="select" id="value-4" v-model="cardType"
+                                        @click="creditIsHidden = isHidden" v-else disabled>
+                                    <input type="radio" name="select" id="value-5" v-model="cardType" value="DEBIT"
+                                        @click="debitIsHidden = isHidden" v-if="allDebitCards.length < 3">
+                                    <input type="radio" name="select" id="value-5" v-model="cardType" value="DEBIT"
+                                        @click="debitIsHidden = isHidden" v-else disabled>
+                                    <!-- <input type="radio" name="select" id="value-6" v-model="cardColor" value="TITANIUM"> -->
+                                    <!-- <input type="radio" name="select" id="value-4" v-model="cardColor"> -->
+                                    <label for="value-4" class="value-4">
+                                        <div class="select-dots"></div>
+                                        <div class="text" v-if="allCreditCards.length < 3">Credit Card</div>
+                                        <div class="text" v-else>Maximum reached</div>
+                                    </label>
+
+                                    <label for="value-5" class="value-5">
+                                        <div class="select-dots"></div>
+                                        <div class="text" v-if="allDebitCards.length < 3">Debit Card</div>
+                                        <div class="text" v-else>Maximum reached</div>
+                                    </label>
+                                    <!-- <label for="value-6" class="value-6">
+                                  <div class="select-dots"></div>
+                                  <div class="text">Titanium Card</div>
+                                </label> -->
+
+                                </div>
+                            </div>
+
+                            <div class="wrap-input100 validate-input">
+                                <h5>Type Card</h5>
+                                <h6 class="card-title mb-3">Select from the following options</h6>
+                                <div class="container">
+                                    <div class="option">
+                                        <input type="radio" name="card" id="royal" value="GOLD" v-model="cardColor"
+                                            @click="changeColor('GOLD'); activePopOver()">
+                                        <label for="royal" aria-label="Royal blue" data-bs-toggle="popover"
+                                            data-bs-placement="right" data-bs-custom-class="custom-popover"
+                                            title="Features" data-bs-content="Exclusive benefits, Travel assistance">
+                                            <span></span>
+                                            Gold
+                                            <div class="cardSmall card--blue card--sm">
+                                                <div class="card__chip"></div>
+                                                <div class="card__content">
+                                                    <div class="card__text">
+                                                        <div class="text__row">
+                                                            <div class="text__loader"></div>
+                                                            <div class="text__loader"></div>
+                                                        </div>
+                                                        <div class="text__row">
+                                                            <div class="text__loader"></div>
+                                                            <div class="text__loader"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card__symbol">
+                                                        <span></span>
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="option">
+                                        <input type="radio" name="card" id="silver" value="SILVER" v-model="cardColor"
+                                            @click="changeColor('SILVER'); activePopOver()">
+                                        <label for="silver" aria-label="Silver" data-bs-toggle="popover"
+                                            data-bs-placement="right" data-bs-custom-class="custom-popover"
+                                            title="Features"
+                                            data-bs-content="Personalized attention, Exclusive benefits,Travel assistance,Prearranged Personal Loan ready to use,Authorized overdraft account service">
+                                            <span></span>
+                                            Silver
+                                            <div class="cardSmall card--white card--sm">
+                                                <div class="card__chip"></div>
+                                                <div class="card__content">
+                                                    <div class="card__text">
+                                                        <div class="text__row">
+                                                            <div class="text__loader"></div>
+                                                            <div class="text__loader"></div>
+                                                        </div>
+                                                        <div class="text__row">
+                                                            <div class="text__loader"></div>
+                                                            <div class="text__loader"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card__symbol">
+                                                        <span></span>
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+
+                                    <div class="option">
+                                        <input type="radio" name="card" id="dark" value="TITANIUM" v-model="cardColor"
+                                            @click="changeColor('TITANIUM'); activePopOver()">
+                                        <label for="dark" aria-label="Dark grey" data-bs-toggle="popover"
+                                            data-bs-placement="right" data-bs-custom-class="custom-popover"
+                                            title="Features"
+                                            data-bs-content="Personalized attention, Exclusive benefits,Travel assistance,Prearranged Personal Loan ready to use,Authorized overdraft account service">
+                                            <span></span>
+                                            Titanium
+                                            <div class="cardSmall card--dark card--sm">
+                                                <div class="card__chip"></div>
+                                                <div class="card__content">
+                                                    <div class="card__text">
+                                                        <div class="text__row">
+                                                            <div class="text__loader"></div>
+                                                            <div class="text__loader"></div>
+                                                        </div>
+                                                        <div class="text__row">
+                                                            <div class="text__loader"></div>
+                                                            <div class="text__loader"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card__symbol">
+                                                        <span></span>
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="container-login100-form-btn">
+                                <button type="submit" class="login100-form-btn" v-if="cards.length < 6">
+                                    Send Request
+                                </button>
+                                <button type="button" class="login100-form-btn" v-else disabled>
+                                    Maximum reached<i class='bx bxs-lock bx-md ps-2'></i>
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                        <!-- :class="{'silver' : silverCreditIsHidden ,'gold' : goldCreditIsHidden,'titanium' : titaniumCreditIsHidden}" -->
+                        <div class="login100-pic js-tilt" data-tilt>
+                            <div class="card pt-5 cardTotal" v-if="!creditIsHidden || !debitIsHidden" id="colorCard">
+                                <div class="card__front card__part">
+                                    <div class="row">
+                                        <div class="col-4">
+                                        </div>
+                                        <div class="col-8 cardFront">
+                                            <div class="row d-flex justify-content-end pe-3">
+                                                <img src="./img/chipCardContactLess.png" alt="contactless">
+                                            </div>
+                                            <div class="contentVacio"></div>
+                                            <div class="contentVacio2"></div>
+                                            <p class="card__info pb-1 pe-3 text-end">{{infoClient}}</p>
+                                            <div class="row mb-1 pe-3 d-flex justify-content-end" id="visaSignature2">
+                                                <img src="./img/visaSignature.png" alt="visaSignature">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card__back card__part" id="colorCardBack">
+                                    <div class="card__space-25-dark "></div>
+
+                                    <div class="card__space-75-back">
+                                        <img src="./img/runebank.png" id="smallLogoBack">
+                                        <!-- <div class="spaceWhite"></div> -->
+                                        <div class="infoCard">
+                                            <p class="card_numer pt-3">4509657435210986</p>
+
+                                            <p class="card__label fw-bold"><span class="fw-normal">CVV:</span> 322</p>
+
+                                            <span class="card__label fw-bold"><span class="fw-normal">Expires:</span>
+                                                {{getExpiresDate(Date())}}</span>
+                                        </div>
+
+                                        <div class="card__info3">
+                                            <p>This card is issued by Rune Bank limited persuant to license by Visa Ltd
+                                            </p>
+                                            <p>USA: 1-800 324-4152 / Call collect: (1-303) 967-1098</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="modalCard" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Rune Bank | Create new Account </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Do you want to request a new Card?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-purple" @click="createCard">Request Card</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--Container Main end-->
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="./data/create-cards.js"></script>
+    <script src="./vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="./vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/tilt/tilt.jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+    <script src="js/jquery.dlmenu.js"></script>
+
+
+
+
+
+</body>
+
+</html>

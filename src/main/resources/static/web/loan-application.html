@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css' rel='stylesheet'>
+    <link href="./styles/style.css" rel="stylesheet">
+    <link href="./styles/loan.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,800;1,200;1,300;1,400;1,500&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
+    <title>Homebanking - Loans</title>
+</head>
+
+
+<body id="body-pd">
+    <div id="app">
+        <header class="header" id="header">
+            <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+            <div class="header_img_logo slide-in-blurred-top"><img src="./img/runebank.png" alt="Logo"></div>
+            <!-- <button class="btn"> <div class="header_img"><h5>{{initials}}</h5></div></button> -->
+            <div class="menu">
+                <ul class="d-flex justify-content-end">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <div class="header_img d-none d-sm-block">
+                                <h5 v-cloak>{{initials}}</h5>
+                            </div>
+                            <!-- <img src="assets/images/avatar/avatar-1.png" alt=""> -->
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="./user.html"><i class="fa fa-user size-icon-1"></i>
+                                <span>My Profile</span></a>
+                            <!-- <a class="dropdown-item" href="settings.html"><i class="fa fa-cog size-icon-1"></i>
+                            <span>Settings</span></a> -->
+                            <hr class="dropdown-divider">
+                            <a class="dropdown-item" href="#" @click="logout"><i class="bx bx-exit  size-icon-1"></i>
+                                <span>SignOut</span></a>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </header>
+
+        <div class="l-navbar" id="nav-bar">
+            <nav class="nav">
+                <div>
+                    <a href="./accounts.html" class="nav_logo"><i class='bx bxs-bank' style='color:#ffffff'></i><span
+                            class="nav_logo-name">Rune Bank</span></a>
+                    <div class="nav_list">
+                        <a href="./accounts.html" class="nav_link"><i class='bx bx-wallet'></i><span
+                                class="nav_name">Accounts</span></a>
+                        <a href="./cards.html" class="nav_link"><i class='bx bx-credit-card-alt'></i><span
+                                class="nav_name">Cards</span></a>
+                        <a href="./transfers.html" class="nav_link "><i class='bx bx-transfer'></i><span
+                                class="nav_name">Transfers</span></a>
+                        <a href="#" class="nav_link active"><i class='bx bx-bar-chart-alt-2 nav_icon'></i><span
+                                class="nav_name">
+                                Loans</span></a>
+                        <a href="../payOut/payOut.html" class="nav_link"><i class='bx bx-money-withdraw'></i><span
+                                class="nav_name">Payments</span></a>
+                        <a href="./user.html" class="nav_link"><i class='bx bx-user nav_icon'></i><span
+                                class="nav_name">User</span></a>
+                    </div>
+                </div>
+                <a href="#" class="nav_link" @click="logout"><i class='bx bx-log-out nav_icon'></i><span
+                        class="nav_name">SignOut</span></a>
+            </nav>
+        </div>
+
+        <main class="fade-in-fwd">
+
+            <div class="ps-3 pt-5 welcome">
+                <h2>{{infoClient}} </h2>
+            </div>
+
+            <!-- QUICK ACCESS -->
+            <div class="container-fluid d-none d-md-block">
+                <section class="responsiveAccess">
+                    <div class="row">
+                        <div class="col-12 mt-3 mb-1">
+                            <h4 class="text-uppercase">Quick Access</h4>
+                        </div>
+                    </div>
+                    <div class="row responsiveAccess2" id="aRune">
+                        <div class="col-xl-3 col-md-6 col-6 mb-4 ">
+                            <div>
+                                <a href="./accounts.html" class="cardQuickAccess qAviolet">
+                                    <div class="overlay"></div>
+                                    <p><i class='bx bx-wallet'></i> Accounts</p>
+
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6 col-6 mb-4">
+                            <div>
+                                <a href="#" class="cardQuickAccess qAgreen">
+                                    <div class="overlay"></div>
+                                    <p><i class='bx bx-money-withdraw'></i> Payments</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6 col-6 mb-4">
+                            <div>
+                                <a href="#" class="cardQuickAccess qAblue">
+                                    <div class="overlay"></div>
+                                    <p><i class='bx bx-bar-chart-alt-2 nav_icon'></i> Loans</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6 col-6 mb-4">
+                            <div>
+                                <a href="./cards.html" class="cardQuickAccess qAyellow">
+                                    <div class="overlay"></div>
+                                    <p><i class='bx bx-credit-card-alt'></i> Cards</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="ps-3 pt-3 welcome d-block d-sm-none">
+                <h2>Loan Types</h2>
+            </div>
+            <!-- LOAN TYPES -->
+            <div class="d-flex justify-content-center pt-5 pb-5 ">
+                <div class="row w-75 mediaWidth ">
+                    <div class=" col-lg-4 col-12" v-for="loan in loans">
+                        <div class="card pricing-card pricing-plan-basic">
+                            <div class="card-body">
+                                <i
+                                    :class="{'bx bxs-car bx-lg' : loan.name === 'Car Loan','bx bx-face bx-lg' : loan.name === 'Personal Loan','bx bx-building-house bx-lg' : loan.name === 'Mortgage Loan','bx bxs-cat bx-lg' : loan.name === 'cuscus'}"></i>
+                                <p class="pricing-plan-title">{{loan.name}}</p>
+                                <h3 class="pricing-plan-cost ml-auto">${{loan.maxAmount}}</h3>
+                                <ul class="pricing-plan-features">
+                                    <li>Payment possibilities: <span>{{loan.payments.toString()}}</span> </li>
+                                    <li v-show="loan.name === 'Car Loan'">Now you can buy your favorite car</li>
+                                    <li v-show="loan.name === 'Personal Loan'">Treat Yourself, buy what you want!</li>
+                                    <li v-show="loan.name === 'Mortgage Loan'">Your house at your fingertips</li>
+                                    <li>Only {{loan.interest}}%</li>
+                                </ul>
+                                <button class="btn pricing-plan-purchase-btn" @click="selectLoan(loan)">Request</button>
+                                <!-- <button v-show="(clientLoans.name == 'Mortgage Loan').length == 1 " class="btn pricing-plan-purchase-btn disabled">Loan taken</button> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LOAN FORM -->
+            <div class="d-flex justify-content-center pt-3 mb-5 mediaWidth2" id="form">
+                <div class="cardLoan pricing-card mb-3">
+
+                    <form class="row d-flex justify-content-center gap-5 pb-5 " @submit.prevent="requestLoan">
+
+                        <div class="col-12">
+                            <h2 class="text-center pt-4 mt-4">Request Loan</h2>
+                        </div>
+
+                        <div class="col-6 row bg-primary d-flex justify-content-center inputsLoan">
+                            <div class="inputGroup col-12">
+                                <h3 class="text-center mt-5 mb-5">Select amount</h3>
+                                <label for="amount" class="labelAmount">Amount</label>
+                                <input type="number" id="amount" min="1" max="500000" v-model="amountLoan" required>
+                            </div>
+                            <div class="col-6">
+                                <label>Select Account</label>
+                                <select class="form-select form-select-lg formi" aria-label=".form-select-lg example"
+                                    v-model="destinationAccount" required>
+                                    <option selected hidden disabled>Select Your Account</option>
+                                    <option v-for="account in accountsClient2">
+                                        {{account.number}}</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <label class="d-flex d-block">Select Payments</label>
+                                <select class="form-select form-select-lg formi" aria-label=".form-select-lg example"
+                                    v-model="paymentsLoan" required>
+                                    <option selected value="1">Select Payments</option>
+                                    <option v-for="payment in typeLoan.payments" :value="payment">{{payment}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-6 p-3 resumen bg-light d-flex justify-content-center flex-column ">
+                            <h4 class="text-center pb-5">Resumen</h4>
+                            <ul>
+                                <li>Loan Type: {{typeLoan.name}}</li>
+                                <li>Destination account: {{destinationAccount}}</li>
+                                <li>Requested amount: ${{amountLoan}} </li>
+                                <li>Payment selected: {{paymentsLoan}}</li>
+                                <li>Interest: {{typeLoan.interest}}%</li>
+                                <li>Amount to pay per month: <span v-if="amountLoan <=0 || paymentsLoan <=0">$0</span>
+                                    <span
+                                        v-else>${{((amountLoan*(typeLoan.interest)/100)/paymentsLoan).toFixed(2)}}</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class=" d-flex justify-content-center" id="checkCondition">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                    id="flexRadioDefault1" v-model="idLoan" :value="typeLoan.id" required>
+                                <label class="form-check-label" for="flexRadioDefault1"> Accept
+                                    terms and conditions | <span><a href="./termsLoan.html"
+                                            target="_blank">Read</a></span></label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-purple w-25" id="btnSend">Send request Loan</button>
+                    </form>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalLoan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Loan Confirmation</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        You are about to apply for a loan
+                        <ul>
+                            <li>A total of ${{amountLoan}} to be paid in ${{(amountLoan*1.2/paymentsLoan).toFixed(2)}}
+                                per month</li>
+                        </ul>
+                        <p class="text-danger" v-show="notification">{{errorMessage}}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary btn-purple" @click="requestLoan()">Apply for
+                            Loan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+
+    <script src="./data/loan-application.js"></script>
+
+    <script type="text/javascript" src="./data/vanilla-tilt.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+
+</body>
+
+</html>

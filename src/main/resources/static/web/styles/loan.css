@@ -1,0 +1,312 @@
+:root {
+    --header-height: 3rem;
+    --nav-width: 68px;
+    --first-color: #2f195e;
+    --first-color-light: #edebf3;
+    --second-color: #513a81;
+    --white-color: #F7F6FB;
+    --yellow-color: #ffd861;
+    --body-font: 'Nunito', sans-serif;
+    --normal-font-size: 1rem;
+    --z-fixed: 100;
+    --delay: 0;
+    --duration: 1200ms;
+    --iterations: 1;
+}
+
+
+.pricing-table-subtitle {
+    margin-top: 68px;
+    font-weight: normal;
+}
+
+.pricing-table-title {
+    font-weight: bold;
+    margin-bottom: 68px;
+}
+
+.pricing-card {
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    text-align: center;
+    -webkit-transition: all 0.6s;
+    transition: all 0.6s;
+}
+
+.pricing-card:hover {
+    box-shadow: 0 2px 40px 0 rgba(205, 205, 205, 0.55);
+}
+
+.pricing-card .pricing-card-highlighted {
+    box-shadow: 0 2px 40px 0 rgba(205, 205, 205, 0.55);
+}
+
+.pricing-card:hover {
+    box-shadow: 0 2px 40px 0 rgba(205, 205, 205, 0.55);
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px);
+}
+
+.pricing-card .card-body {
+    padding-top: 55px;
+    padding-bottom: 62px;
+}
+
+.pricing-plan-title {
+    font-size: 20px;
+    color: #000;
+    margin-bottom: 11px;
+    font-weight: normal;
+}
+
+.pricing-plan-cost {
+    font-size: 50px;
+    color: #000;
+    font-weight: bold;
+    margin-bottom: 29px;
+}
+
+.pricing-plan-icon {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+    line-height: 1;
+    margin-bottom: 24px;
+}
+
+.pricing-plan-features {
+    list-style: none;
+    padding-left: 0;
+    font-size: 14px;
+    line-height: 2.14;
+    margin-bottom: 35px;
+    color: #303132;
+}
+
+.pricing-plan-purchase-btn {
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;
+    width: 145px;
+    height: 45px;
+    border-radius: 22.5px;
+    -webkit-transition: all 0.4s;
+    transition: all 0.4s;
+    position: relative;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+
+.pricing-plan-basic .pricing-plan-purchase-btn {
+    background-color: var(--first-color);
+    color: #fff;
+}
+
+.pricing-plan-basic .pricing-plan-purchase-btn:hover {
+    box-shadow: 0 3px 0 0 #6900a2;
+}
+
+.pricing-plan-basic .pricing-plan-purchase-btn:active {
+    -webkit-transform: translateY(3px);
+    transform: translateY(3px);
+    box-shadow: none;
+}
+
+
+.cardLoan {
+    min-height: 35rem;
+    border-radius: 10px;
+    background-color: white;
+}
+
+
+.formi {
+    width: 100%;
+}
+
+.requestLoan {
+    font-size: 2.5rem;
+    text-decoration: underline #621d9b 3px;
+
+}
+
+.resumen{
+    height: 25rem;
+    width: 30rem;
+    background: linear-gradient(135deg, #dcbff3, #7600d6, #600ca4);
+    background-size: 600% 600%;
+    border-radius: 10px;
+    -webkit-animation: grandienteCard 57s ease infinite;
+    -moz-animation: grandienteCard 57s ease infinite;
+    -o-animation: grandienteCard 57s ease infinite;
+    animation: grandienteCard 57s ease infinite;
+    color: white;
+}
+
+.inputsLoan{
+    height: 25rem;
+    width: 30rem;
+    background: linear-gradient(135deg, #dcbff3, #7600d6, #600ca4);
+    background-size: 600% 600%;
+    border-radius: 10px;
+    -webkit-animation: grandienteCard 57s ease infinite;
+    -moz-animation: grandienteCard 57s ease infinite;
+    -o-animation: grandienteCard 57s ease infinite;
+    animation: grandienteCard 57s ease infinite;
+    color: white;
+}
+
+
+
+@-webkit-keyframes grandienteCard {
+    0%{background-position:88% 0%}
+    50%{background-position:13% 100%}
+    100%{background-position:88% 0%}
+}
+@-moz-keyframes grandienteCard {
+    0%{background-position:88% 0%}
+    50%{background-position:13% 100%}
+    100%{background-position:88% 0%}
+}
+@-o-keyframes grandienteCard {
+    0%{background-position:88% 0%}
+    50%{background-position:13% 100%}
+    100%{background-position:88% 0%}
+}
+@keyframes grandienteCard {
+    0%{background-position:88% 0%}
+    50%{background-position:13% 100%}
+    100%{background-position:88% 0%}
+}
+
+.resumen h4{
+    font-size: 3.4rem;
+}
+
+.resumen ul li{
+    list-style: none;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.resumen ul{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: left;
+}
+
+.inputGroup{
+    position: relative;
+
+    padding: 0;
+    margin: 0;
+    width: 70%;
+    padding-top: 1rem;
+}
+
+.labelAmount{
+    position: absolute;
+    transform: translate(10px, 10px);
+    transition: transform .25s;
+
+}
+
+#amount{
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font: inherit;
+    color: #ffff;
+    background-color: #303030 ;
+    outline: 2px solid #fff;
+    width: 70%;
+}
+
+.inputGroup:focus-within label{
+    transform: 
+    translate(0, -30px) scale(.8);
+    color: #ffff;
+}
+
+.inputGroup:focus-within #amount{
+    outline-color: var(--first-color);
+    text-align: end;
+    font-weight: 800;
+}
+
+.inputGroup #amount{
+    text-align: end;
+    font-weight: 800;
+}
+
+.amountGroup{
+    height: 5rem;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; 
+}
+
+.modal-content {
+    background-color: rgb(32, 27, 27);
+    color: white;
+    border: none;
+    border-radius: 1rem;
+  }
+
+  @media (max-width: 600px) {
+    .mediaWidth{
+        width: 100%!important;
+    }
+    .mediaWidth2{
+        width: 100%;
+    }
+    .inputsLoan{
+        width: 20rem;
+    }
+    .resumen{
+        width: 20rem;
+    }
+    .resumen ul{
+        padding: 0;
+        text-align: start;
+    }
+    .resumen ul li{
+        font-size: 1.2rem;
+    }
+
+    .cardLoan{
+        width: 100%;
+    }
+
+    #btnSend{
+        width: 60%!important;
+    }
+
+
+  }
+
+  @media (max-width: 840px) {
+    .mediaWidth{
+        width: 93%!important;
+    }
+    .mediaWidth2{
+        width: 100%;
+    }
+    .cardLoan{
+        width: 90%;
+    }
+
+  }

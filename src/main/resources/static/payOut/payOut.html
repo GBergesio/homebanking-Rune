@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="./styles/style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,800;1,200;1,300;1,400;1,500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+        integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link href="https://unpkg.com/webkul-micron@1.1.6/dist/css/micron.min.css" type="text/css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Homebanking - Accounts</title>
+</head>
+
+<body id="body-pd">
+    <div id="app">
+        <div class="wrapper">
+            <div class="payment">
+                <div class="payment-logo">
+                    <p>R</p>
+                </div>
+                <h2>Rune Payment</h2>
+                <form class="form" @submit.prevent="makePayment">
+                    <div class="card space icon-relative">
+                        <!-- <label class="label">Card holder:</label> -->
+                        <input type="text" class="input" placeholder="Card Holder">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="card space icon-relative">
+                        <!-- <label class="label">Card number:</label> -->
+                        <input type="number" class="input" v-model="cardNumber" required >
+                        <i class="far fa-credit-card"></i>
+                    </div>
+                    <div class="card-grp space">
+                        <div class="card-item icon-relative">
+                            <!-- <label class="label">Expiry date:</label> -->
+                            <input type="number" name="expiry-data" class="input" placeholder="Month" min="1" max="12">
+                            <i class="far fa-calendar-alt"></i>
+                        </div>
+                        <div class="card-item icon-relative">
+                            <!-- <label class="label">Expiry date:</label> -->
+                            <input type="number" name="expiry-data" class="input" placeholder="Year" min="0" max="99">
+                            <i class="far fa-calendar-alt"></i>
+                        </div>
+                    </div>
+                    <div class="card-grp space">
+                        <div class="card-item icon-relative">
+                            <!-- <label class="label">CVC:</label> -->
+                            <input type="number" class="input" data-mask="000" placeholder="CVV" max="9999" required v-model="cvv">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                    </div>
+                    <div class="card space icon-relative">
+                        <input type="number" class="input" placeholder="Amount" min="1" required v-model="amount">
+                        <i class="bx bx-dollar"></i>
+                    </div>
+                    <div class="card space icon-relative">
+                        <input type="text" class="input" placeholder="Description" required v-model="description">
+                        <i class="bx bxs-info-circle"></i>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn w-50">Pay</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- <script src="https://unpkg.com/webkul-micron@1.1.6/dist/script/micron.min.js" type="text/javascript"></script> -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="./data/payOut.js"></script>
+</body>
+
+</html>

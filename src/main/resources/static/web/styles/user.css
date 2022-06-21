@@ -1,0 +1,23 @@
+.infoClientCard {
+    background-color: #fff;
+    border: none;
+    border-radius: 10px;
+    -webkit-transition: all 0.6s;
+    transition: all 0.6s;
+    width: 22%;
+    min-height: 20rem;
+}
+
+.infoClientCard:hover {
+    box-shadow: 0 2px 40px 0 rgba(205, 205, 205, 0.55);
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px);
+}
+
+.ending{
+    font-size: .8rem;
+    color: rgb(161, 161, 161);
+}
+.spanAccount{
+    font-size: .7rem;
+}
