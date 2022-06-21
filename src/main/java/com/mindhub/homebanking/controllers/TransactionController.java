@@ -103,11 +103,14 @@ public class TransactionController {
 
         Account accountDebit = accountRepository.findByNumber(rootAccount);
         Account accountCredit = accountRepository.findByNumber(destinationAccount);
-        Transaction debitTransaction = new Transaction(TransactionType.DEBIT,0-amount,description + " transfer to " + accountCredit.getNumber(), LocalDateTime.now(),accountDebit,accountDebit.getBalance() - amount);
-        Transaction creditTransaction = new Transaction(TransactionType.CREDIT,amount,description + " transfer from " +  accountDebit.getNumber(), LocalDateTime.now(),accountCredit, accountCredit.getBalance() + amount);
 
         accountDebit.setBalance(accountDebit.getBalance() - amount);
         accountCredit.setBalance(accountCredit.getBalance() + amount);
+
+        Transaction debitTransaction = new Transaction(TransactionType.DEBIT,0-amount,description + " transfer to " + accountCredit.getNumber(), LocalDateTime.now(),accountDebit, accountDebit.getBalance());
+        Transaction creditTransaction = new Transaction(TransactionType.CREDIT,amount,description + " transfer from " +  accountDebit.getNumber(), LocalDateTime.now(),accountCredit, accountCredit.getBalance());
+
+
 
         accountService.saveAccount(accountDebit);
         accountService.saveAccount(accountCredit);
