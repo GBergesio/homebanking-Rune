@@ -39,7 +39,7 @@
                         <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             <div class="header_img d-none d-sm-block">
-                                <h5 v-cloak>{{initials}}</h5>
+                                <h5 v-cloak class="noSelectText">{{initials}}</h5>
                             </div>
                             <!-- <img src="assets/images/avatar/avatar-1.png" alt=""> -->
                         </a>
@@ -131,11 +131,11 @@
                             <div class="panel"
                                 :class="{'titaniumAcc' : card.color === 'BLACK', 'goldAcc' : card.color === 'GOLD' , 'silverAcc' : card.color === 'PLATINUM'}"
                                 v-for="card in cards">
-                                <h2 class="name font-weight-bold"><span v-show="card.type == 'DEBIT'">Debit
+                                <h2 class="name font-weight-bold noSelectText"><span v-show="card.type == 'DEBIT'">Debit
                                         Card</span><span v-show="card.type == 'CREDIT'">Credit Card</span></h2>
-                                <h3 class="type" @click="copiarNumber(card.number)">
+                                <h3 class="type noSelectText" @click="copiarNumber(card.number)">
                                     **** **** **** **** {{card.number.toString().slice(-4)}}</h3>
-                                <span class="abv">{{card.color.toString()}}</span>
+                                <span class="abv noSelectText">{{card.color.toString()}}</span>
                             </div>
                         </div>
                         <div v-if="cards.length>=1 && cards.length<6" class="d-flex justify-content-center pt-3">

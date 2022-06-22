@@ -1658,6 +1658,13 @@ tbody tr td.text-muted {
   border-radius: 1rem;
 }
 
+.noSelectText{
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; 
+}
+
 .panel .name,
 .panel .type,
 .panel .abv {
@@ -1732,7 +1739,7 @@ tbody tr td.text-muted {
   width: 50rem;
 }
 
-.typeAccount {
+.Account {
   font-size: 1.1rem;
 }
 

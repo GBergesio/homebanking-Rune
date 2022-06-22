@@ -37,15 +37,12 @@
                         <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             <div class="header_img d-none d-sm-block">
-                                <h5 v-cloak>{{initials}}</h5>
+                                <h5 v-cloak class="noSelectText">{{initials}}</h5>
                             </div>
-                            <!-- <img src="assets/images/avatar/avatar-1.png" alt=""> -->
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="./user.html"><i class="fa fa-user size-icon-1"></i>
                                 <span>My Profile</span></a>
-                            <!-- <a class="dropdown-item" href="settings.html"><i class="fa fa-cog size-icon-1"></i>
-                                <span>Settings</span></a> -->
                             <hr class="dropdown-divider">
                             <a class="dropdown-item" href="#" @click="logout"><i class="bx bx-exit  size-icon-1"></i>
                                 <span>SignOut</span></a>
