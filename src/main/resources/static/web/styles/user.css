@@ -4,7 +4,7 @@
     border-radius: 10px;
     -webkit-transition: all 0.6s;
     transition: all 0.6s;
-    width: 22%;
+    width: 30rem;
     min-height: 20rem;
 }
 
@@ -12,6 +12,12 @@
     box-shadow: 0 2px 40px 0 rgba(205, 205, 205, 0.55);
     -webkit-transform: translateY(-10px);
     transform: translateY(-10px);
+}
+
+.cardUsers{
+    background-color: #fff;
+    border: none;
+    border-radius: 10px;
 }
 
 .ending{

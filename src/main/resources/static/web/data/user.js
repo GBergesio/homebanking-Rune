@@ -49,11 +49,19 @@ const app = Vue.createApp({
             this.initials = initialName.charAt(0) + initialLastName.charAt(0)
         },
         logout() {
-            axios.post('/api/logout').then(response => console.log('signed out!!!'))
+            axios.post('/api/logout')
+            .then(response => 
+              Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Successful Logout!' ,
+                showConfirmButton: false,
+                timer: 1500
+              }))
             setTimeout(function () {
-                window.location.href = './index.html'
+              window.location.href = './index.html'
             }, 1000)
-        },
+          },
         sortAccounts() {
             this.accounts.sort((a, b) => a.id - b.id)
         },
@@ -105,7 +113,7 @@ const app = Vue.createApp({
         deleteCard(card) {
             Swal.fire({
                 title: 'Are you sure?',
-                text: "You won't be able to revert this!",
+                text: "You are about to delete a Card!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -144,7 +152,7 @@ const app = Vue.createApp({
         renewCard(card) {
             Swal.fire({
                 title: 'Are you sure?',
-                text: "You won't be able to revert this!",
+                text: "You are about to renew a card of the same type and color!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -186,7 +194,7 @@ const app = Vue.createApp({
         deleteAccount(account) {
             Swal.fire({
                 title: 'Are you sure?',
-                text: "You won't be able to revert this!",
+                text: "You are about to delete an Account!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',

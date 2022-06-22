@@ -209,7 +209,6 @@
                             </button>
                         </div>
                     </form>
-
                     <form>
                         <h3>The last contacts you transferred money to</h3>
                         <div class="row">
@@ -218,83 +217,20 @@
                                 <option v-for="recent in allDescriptionsTo">{{recent.slice(-12)}}</option>
                             </select>
                             <label>
-                                <!-- <input list="transferencias" name="myBrowser" /></label>
-                            <datalist id="transferencias">
-                                <option v-for="recent in allDescriptionsTo">{{recent.slice(-12)}}</option>
-                            </datalist> -->
                         </div>
                     </form>
-
                     <form>
                         <h2>Returns</h2>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa dicta vero rerum? Eaque
-                        repudiandae architecto libero reprehenderit aliquam magnam ratione quidem? Nobis doloribus
-                        molestiae enim deserunt necessitatibus eaque quidem incidunt.
+                        <h5>
+                            Claims for erroneous transfers to the phone:
+                            +298 589 5348 16
+                        </h5>
+                        <h5>
+                            Or send email to info@runebank.com
+                        </h5>
                     </form>
-
                 </div>
             </div>
-
-
-            <!-- Modal -->
-            <div class="modal fade" id="transfer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Rune Bank | Transfer</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            You are about to make a transfer.
-                            Do you want to continue?
-                            <p class="text-danger" v-show="notification">{{errorMessage}}</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button class="btn btn-purple" @click="makeTransfer" id="liveToastBtn">Transfer</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Modal -->
-
-            <!-- Modal -->
-            <div class="modal fade" id="transferOwn" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Rune Bank | Transfer</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            You are about to make a transfer.
-                            Do you want to continue?
-                            <p class="text-danger" v-show="notification">{{errorMessage}}</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-purple" @click="makeTransferOwn">Transfer</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Modal -->
-
-            <div class="toast-container position-fixed bottom-0 end-0 p-3">
-                <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                    <div class="toast-header">
-                        <img src="..." class="rounded me-2" alt="...">
-                        <strong class="me-auto">Bootstrap</strong>
-                        <small>1 second ago</small>
-                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                    </div>
-                    <div class="toast-body">
-                        Hello, world! This is a toast message.
-                    </div>
-                </div>
-            </div>
-
         </main>
     </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -306,9 +242,5 @@
     <script src="https://unpkg.com/vue@3"></script>
     <script src="./data/transfer.js"></script>
     <script type="text/javascript" src="./data/vanilla-tilt.js"></script>
-
-
-
 </body>
-
 </html>

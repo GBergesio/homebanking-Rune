@@ -81,44 +81,41 @@
         </div>
 
         <main class="fade-in-fwd">
-            <div class="container-fluid">
-                <div class="row bg-primary pt-3 gap-3">
 
-                    <div class="infoClientCard p-5 pt-4 col-xl-12">
-                        <h4 class="text-center pb-1">Client</h4>
-                        <h6> {{infoClient}} </h6>
-                        <h6>Email: {{this.client.email}} </h6>
+            <div class="row pt-3 gap-3 d-flex justify-content-center pb-3">
+                <div class="infoClientCard p-5 pt-4 col-xl-3 col-12">
+                    <h4 class="text-center pb-1">Client</h4>
+                    <h6> {{infoClient}} </h6>
+                    <h6>Email: {{this.client.email}} </h6>
+                </div>
+                <div class="infoClientCard p-5 pt-4 col-xl-3 col-12">
+                    <h4 class="text-center pb-1">Accounts Active</h4>
+                    <div v-for="account in accounts">
+                        <h5>{{account.number}} <span class="spanAccount"><b>Savings Account</b></span></h5>
+                        <h6 class="ending">Actual Balance:
+                            <span v-show="account.balance > '0'" class="text-success">${{account.balance}}</span>
+                            <span v-show="account.balance == '0'" class="text-warning">${{account.balance}}</span>
+                        </h6>
                     </div>
-
-                    <div class="infoClientCard p-5 pt-4 col-xl-3 col-12">
-                        <h4 class="text-center pb-1">Accounts Active</h4>
-                        <div v-for="account in accounts">
-                            <h5>{{account.number}} <span class="spanAccount"><b>Savings Account</b></span></h5>
-                            <h6 class="ending">Actual Balance:
-                                <span v-show="account.balance > '0'" class="text-success">${{account.balance}}</span>
-                                <span v-show="account.balance == '0'" class="text-warning">${{account.balance}}</span>
-                            </h6>
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <button class="btn btn-purple" data-bs-toggle="modal" data-bs-target="#modalAccounts">Manage
-                                Accounts</button>
-                        </div>
+                    <div class="d-flex justify-content-center">
+                        <button class="btn btn-purple" data-bs-toggle="modal" data-bs-target="#modalAccounts">Manage
+                            Accounts</button>
                     </div>
-                    <div class="infoClientCard p-5 pt-4 col-xl-3 col-12">
-                        <h4 class="text-center pb-1">Cards Active</h4>
-                        <div v-for="card in cards">
-                            <h5>Visa <span v-if="card.type == 'CREDIT'"><b>Credit</b></span><span
-                                    v-else><b>Debit</b></span>
-                                Card</h5>
-                            <h6 class="ending">Ending {{card.number.toString().slice(-4)}}</h6>
-                        </div>
-                        <div class="d-flex justify-content-center align-items-end">
-                            <button class="btn btn-purple" data-bs-toggle="modal" data-bs-target="#modalCards">Manage
-                                Cards
-                            </button>
-                        </div>
+                </div>
+                <div class="infoClientCard p-5 pt-4 col-xl-3 col-12">
+                    <h4 class="text-center pb-1">Cards Active</h4>
+                    <div v-for="card in cards">
+                        <h5>Visa <span v-if="card.type == 'CREDIT'"><b>Credit</b></span><span v-else><b>Debit</b></span>
+                            Card</h5>
+                        <h6 class="ending">Ending {{card.number.toString().slice(-4)}}</h6>
                     </div>
-                    <div class="infoClientCard p-5 pt-4 col-xl-3 col-12">
+                    <div class="d-flex justify-content-center align-items-end">
+                        <button class="btn btn-purple" data-bs-toggle="modal" data-bs-target="#modalCards">Manage
+                            Cards
+                        </button>
+                    </div>
+                </div>
+                 <div class="infoClientCard p-5 pt-4 col-xl-3 col-12">
                         <h4 class="text-center pb-1">Loans Active</h4>
                         <div v-for="loan in loans">
                             <h5>{{loan.name}}</h5>
@@ -127,10 +124,9 @@
                         <div class="d-flex justify-content-center align-items-end">
                             <button class="btn btn-purple" disabled>Pay Loan (Currently disabled)</button>
                         </div>
-                    </div>
-
-                </div>
+                    </div> 
             </div>
+
         </main>
         <!-- Modal Accounts-->
         <div class="modal fade " id="modalAccounts" tabindex="-1" aria-labelledby="exampleModalLabel"

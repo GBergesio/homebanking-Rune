@@ -10,8 +10,9 @@ const app = Vue.createApp({
       accountsClient2: [],
       loans: [],
       cards: [],
+      balanceTotal: 0,
       accNumber: "",
-      dataBalance: 0,
+      dataBalance: [],
       transactions: [],
       allDescriptions: [],
       allTransactions: [],
@@ -19,7 +20,8 @@ const app = Vue.createApp({
       allAmountsDebit: [],
       // allTransactionsAmount: []     
       initials: "",
-      userType:""
+      userType: "",
+      newbal: null
     }
   },
   created() {
@@ -60,13 +62,18 @@ const app = Vue.createApp({
           this.searchTransactionsAmounts()
           this.searchTransactionsDescription()
           this.cutName()
+          this.dataBalance = []
+          let acc = this.accountsClient
+          acc.forEach(accBal => {
+            this.dataBalance.push(accBal.balance)
+          })
+          this.newbal = this.dataBalance.reduce((a, b) => a + b, 0)
         })
     },
     loadAccounts() {
       axios.get(`/api/clients/current/accounts`)
         .then(data => {
           this.accountsClient2 = data.data
-          console.log(this.accountsClient2);
         })
     },
     sortAccounts() {
@@ -129,10 +136,11 @@ const app = Vue.createApp({
     },
     createAccount() {
       const inputOptions = new Promise((resolve) => {
-          resolve({
-            'SAVINGS': 'Savings Account',
-            'CURRENT': 'Current Account',
-          })})
+        resolve({
+          'SAVINGS': 'Savings Account',
+          'CURRENT': 'Current Account',
+        })
+      })
       const { value: typeAccount } = Swal.fire({
         title: 'Select Type Account',
         input: 'radio',
@@ -140,13 +148,15 @@ const app = Vue.createApp({
         inputValidator: (value) => {
           if (!value) {
             return 'You need to choose something!'
-          }}})
+          }
+        }
+      })
         .then((result) => {
           if (result.isConfirmed) {
             axios.post(`/api/clients/current/accounts`, `accountType=${result.value}`)
               .catch(function (error) {
                 this.error = error.response.data
-                console.log(this.error);
+                // console.log(this.error);
               })
               .then(response => {
                 if (this.error == "Forbidden, already has 3 accounts") {
@@ -166,7 +176,9 @@ const app = Vue.createApp({
                     location.reload()
                   }, 1000)
                 }
-              })}})
+              })
+          }
+        })
     },
     cutName() {
       let initialName = this.dataClient.firstName
@@ -175,57 +187,35 @@ const app = Vue.createApp({
     },
     showChart() {
       var root = am5.Root.new("chartdiv");
-      // Set themes
-      // https://www.amcharts.com/docs/v5/concepts/themes/
       root.setThemes([
         am5themes_Animated.new(root)
       ]);
-      // Create chart
-      // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
       var chart = root.container.children.push(
         am5percent.PieChart.new(root, {
           startAngle: 160, endAngle: 380
         })
       );
-      // Create series
-      // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
       var series0 = chart.series.push(
         am5percent.PieSeries.new(root, {
-          valueField: "litres",
-          categoryField: "country",
+          valueField: "account",
+          categoryField: "balance",
           startAngle: 160,
           endAngle: 380,
           radius: am5.percent(70),
-          innerRadius: am5.percent(65)
+          innerRadius: am5.percent(65),
         })
       );
-      // series0.get("colors").getIndex(0)
-      var colorSet = am5.ColorSet.new(root, {
-        colors: ['#BBBBB', '#EEEEEE', '#FFFFF'],
-        passOptions: {
-          lightness: -0.05,
-          hue: 0
-        }
-      });
-
-      series0.set("colors", colorSet);
-
-      series0.ticks.template.set("forceHidden", true);
-      series0.labels.template.set("forceHidden", true);
-
       var series1 = chart.series.push(
         am5percent.PieSeries.new(root, {
           startAngle: 160,
           endAngle: 380,
           valueField: "balance",
-          innerRadius: am5.percent(75),
+          innerRadius: am5.percent(80),
           categoryField: "account"
         })
       );
-
       series1.ticks.template.set("forceHidden", true);
       series1.labels.template.set("forceHidden", true);
-
       var label = chart.seriesContainer.children.push(
         am5.Label.new(root, {
           textAlign: "center",
@@ -234,10 +224,8 @@ const app = Vue.createApp({
           text: `[fontSize:18px]Total[/]:\n[bold fontSize:30px]$${this.accountsClient.map(account => account.balance).reduce((a, b) => a + b, 0)}[/]`
         })
       );
-
       var data = [
       ];
-
       this.accountsClient.forEach(account => {
         let item = {};
         item = {
@@ -246,18 +234,41 @@ const app = Vue.createApp({
         }
         data.push(item)
       })
-
-      // Set data
-      // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
-      series0.data.setAll(data);
+      // series0.data.setAll(data);
       series1.data.setAll(data);
     },
+    // logout() {
+    //   axios.post('/api/logout').then(response => console.log('Thanks for use Rune Bank'))
+    //   setTimeout(function () {
+    //     window.location.href = './index.html'
+    //   }, 1000)
+    // }
+
     logout() {
-      axios.post('/api/logout').then(response => console.log('signed out!!!'))
+      axios.post('/api/logout')
+      .then(response => 
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Successful Logout!' ,
+          showConfirmButton: false,
+          timer: 1500
+        }))
       setTimeout(function () {
         window.location.href = './index.html'
       }, 1000)
     }
+
+
+
+
+
+
+
+
+
+
+
   },
   computed: {
     showClientInformation(client) {
@@ -266,7 +277,7 @@ const app = Vue.createApp({
         lastName: dataClient.lastName,
         email: dataClient.email,
       }
-      return console.log(client)
+      // return console.log(client)
     },
   },
 }).mount('#app')
@@ -293,7 +304,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
       })
     }
   }
-
   showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
 
   /*===== LINK ACTIVE =====*/
@@ -306,8 +316,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   linkColor.forEach(l => l.addEventListener('click', colorLink))
-
-  // Your code to run since DOM is loaded and ready
 });
 
 $(document).ready(function () {

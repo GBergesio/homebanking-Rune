@@ -101,18 +101,14 @@ public class LoanController {
             return new ResponseEntity<>("The account does not belong to the authenticated client", HttpStatus.FORBIDDEN);
         }
 
-        // Solicitud de prestamo =
-//        Double amountInterest = loanApplicationDTO.getAmount() + (loanApplicationDTO.getAmount() * 20 / 100);
         Double amountInterest = loanApplicationDTO.getAmount() * (loan.getInterest() * 0.01 + 1);
         destinationAccount.setBalance(destinationAccount.getBalance() + loanApplicationDTO.getAmount());
 
         Transaction transaction = new Transaction(CREDIT, loanApplicationDTO.getAmount(), loan.getName() + " loan approved", LocalDateTime.now(), destinationAccount, destinationAccount.getBalance());
         ClientLoan clientLoan = new ClientLoan(amountInterest,loanApplicationDTO.getPayments(),client,loan);
-//      accountRepository.save(destinationAccount);
+
         accountService.saveAccount(destinationAccount);
         transactionService.saveTransaction(transaction);
-//      transactionRepository.save(transaction);
-//      clientLoanRepository.save(clientLoan);
         clientLoanService.saveClientLoan(clientLoan);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

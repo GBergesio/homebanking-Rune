@@ -23,6 +23,7 @@
     <!-- Favicons -->
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Homebanking - Accounts</title>
 </head>
 
@@ -74,15 +75,14 @@
                                 class="nav_name">Payments</span></a>
                         <a href="./user.html" class="nav_link"><i class='bx bx-user nav_icon'></i><span
                                 class="nav_name">User</span></a>
-                        <a href="../admin/admin.html" class="nav_link" v-show="userType == 'ADMIN'"><i class='bx bxs-bolt-circle'></i><span
-                                class="nav_name">Switch as Admin</span></a>
+                        <a href="../admin/admin.html" class="nav_link" v-show="userType == 'ADMIN'"><i
+                                class='bx bxs-bolt-circle'></i><span class="nav_name">Switch as Admin</span></a>
                     </div>
                 </div>
                 <a href="#" class="nav_link" @click="logout"><i class='bx bx-log-out nav_icon'></i><span
                         class="nav_name">SignOut</span></a>
             </nav>
         </div>
-
         <main class="fade-in">
             <div class="pt-5 marginStart welcome row fade-in-fwd">
                 <div class="col-xl-3 col-12 ">
@@ -91,85 +91,73 @@
                             class="text-secondColor">{{infoClient}}</span></p>
                 </div>
             </div>
-
-            <div class="row d-flex justify-content-center ">
+            <div class="row d-flex justify-content-center mb-3">
                 <div class="col-12 mt-3 mb-1 d-flex align-items-center marginStart2">
                     <h3 class="text-uppercase"> <i class='bx bxs-dashboard bx-md '></i> Dashboard</h3>
                 </div>
                 <div class="row col-xl-7 col-12 d-flex justify-content-center gap-3">
                     <div class="col-sm-12 col-md-12 col-xl-5 p-4 mt-2 containerBalCard">
                         <h4 class="d-flex align-items-center"><i class='bx bxs-dollar-circle me-3 bx-lg'
-                                style='color:#2f195e'></i>Balance</h4>
-                        <!-- <div v-if="accountsClient.length == 0" class="mt-4 d-flex justify-content-center">
-                            <button @click="createAccount" class="btn btnCard2 d-flex align-self-center">
-                                <p class="ms-1 text-center">Request a new Account</p><i
-                                    class='bx bx-wallet bx-md ms-1 d-flex align-self-center'></i>
-                            </button>
-                        </div> -->
-                        <!-- a <div class="card " v-for="card in cards.filter(card=> card.type=='CREDIT')">-->
-                        <!-- asfas v-for="cuenta in accountsClient" -->
+                                style='color:#600ca4'></i>Balance</h4>
                         <div class="row mb-1" v-for="cuenta in accountsClient2">
                             <div class="col-1 me-3 pt-3 d-flex align-items-center"><i class='bx bx-dollar bx-md'
-                                    style='color:#2f195e'></i></div>
+                                    style='color:#600ca4'></i></div>
                             <div class="col-9 borderBalance">
                                 <h5 class=" ms-1 pt-3"><a>Account: {{cuenta.number}}</a></h5>
                                 <h6 class="ms-1">{{cuenta.accountType}}</h6>
                                 <p class="text-success2 ms-1" v-cloak><span>Balance: </span>${{cuenta.balance}} </p>
                                 <h5 class="ms-1 text-center "><a v-bind:href="'account.html?id=' + cuenta.id"><i
-                                            class='bx bx-transfer me-1'></i>See transfers</a></h5>
+                                            class='bx bx-transfer me-1' style='color:#600ca4'></i>See transfers</a></h5>
                             </div>
                         </div>
                         <div class="mt-4 d-flex justify-content-center"
                             v-if="accountsClient2.length >= 1 && accountsClient2.length < 3">
-                            <button class="btn btnCard2 d-flex align-self-center" @click="createAccount">
+                            <button class="btn bgPurple d-flex align-self-center" @click="createAccount">
                                 <p class="ms-1 text-center">Request a new Account</p><i
                                     class='bx bx-wallet bx-md ms-1 d-flex align-self-center'></i>
                             </button>
                         </div>
-
-                        <!-- <div v-if="accountsClient.length >= 1 && accountsClient.length < 3"
-                            class="mt-4 d-flex justify-content-center">
-                            <button class="btn btnCard2 d-flex align-self-center" data-bs-toggle="modal"
-                                data-bs-target="#modalAccount">
-                                <p class="ms-1 text-center">Request a new Account</p><i
-                                    class='bx bx-wallet bx-md ms-1 d-flex align-self-center'></i>
-                            </button>
-                        </div> -->
-
                     </div>
-
-                    <div class="col-sm-12 col-md-12 col-xl-5 containerBalCard p-4 mt-2 ">
+                    <div class="col-sm-12 col-md-12 col-xl-5 containerBalCard p-4 mt-2">
                         <h4 class="d-flex align-items-center"><i class='bx bxs-credit-card me-3 bx-lg'
-                                style='color:#2f195e'></i>Cards</h4>
+                                style='color:#600ca4'></i>Cards</h4>
                         <div v-if="cards.length==0" class="mt-4 d-flex justify-content-center">
-                            <button class="btn btnCard2 d-flex align-self-center">
+                            <button class="btn bgPurple d-flex align-self-center">
                                 <a href="./create-cards.html" class="ms-1 text-center text-light">Request a new
                                     Card</a><i class='bx bx-credit-card bx-md ms-1 d-flex align-self-center'></i>
                             </button>
                         </div>
                         <div id="menu">
                             <div class="panel"
-                                :class="{'titaniumAcc' : card.color === 'TITANIUM', 'goldAcc' : card.color === 'GOLD' , 'silverAcc' : card.color === 'SILVER'}"
+                                :class="{'titaniumAcc' : card.color === 'BLACK', 'goldAcc' : card.color === 'GOLD' , 'silverAcc' : card.color === 'PLATINUM'}"
                                 v-for="card in cards">
                                 <h2 class="name font-weight-bold"><span v-show="card.type == 'DEBIT'">Debit
                                         Card</span><span v-show="card.type == 'CREDIT'">Credit Card</span></h2>
-                                <h3 class="type" @click="copiarNumber(card.number)">Ending:
-                                    {{card.number.toString().slice(-4)}}</h3>
+                                <h3 class="type" @click="copiarNumber(card.number)">
+                                    **** **** **** **** {{card.number.toString().slice(-4)}}</h3>
                                 <span class="abv">{{card.color.toString()}}</span>
                             </div>
                         </div>
                         <div v-if="cards.length>=1 && cards.length<6" class="d-flex justify-content-center pt-3">
-                            <button class="btn btnCard3">
+                            <button class="btn bgPurple">
                                 <a href="./create-cards.html" class="text-center text-light">Request a new Card</a>
                             </button>
                         </div>
                     </div>
-                    <div class="col-xl-12 col-sm-12 col-12 containerChart mt-2">
+                    <div class="col-xl-12 col-sm-12 col-12 containerChart mt-2" v-show="newbal == 0">
+                        <div class="accountCard2 bg-light d-flex justify-content-center align-items-center">
+                            <img src="./img/smallLogo.png" class="w-50 h-50">
+                            <div class="row">
+                                <h4>All your accounts have no balance</h4>
+                                <h6 class="w-75">When you have money in one of your accounts you can see a graph</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12 col-sm-12 col-12 containerChart mt-2" v-show="newbal != 0">
                         <div class="accountCard bg-light" id="chartdiv">
                         </div>
                     </div>
                 </div>
-
                 <div class="col-xl-5 col-12 ">
                     <div class="col-xl-12 col-sm-12 col-12 mb-4">
                         <div class="wrapper">
@@ -197,7 +185,7 @@
                                 <ul class="nav nav-tabs w-75">
                                     <li class="nav-item"> <a class="nav-link active" href="#">History</a></li>
                                 </ul>
-                                <a href="./transfers.html"><button class="btn btn-warning">New Transaction</button></a>
+                                <a href="./transfers.html"><button class="btn bgPurple">New Transaction</button></a>
                             </div>
                             <div class="table-responsive mt-3">
                                 <table class="table table-borderless">
@@ -223,8 +211,6 @@
                                             <td class="d-flex justify-content-end align-items-center text-center"
                                                 :class="{'text-red' : transaction.type === 'DEBIT', 'text-green' : transaction.type === 'CREDIT'}">
                                                 ${{transaction.amount}}
-                                                <!-- <i v-if="transaction.type === 'DEBIT'" class="fa fa-long-arrow-up mr-1"></i>
-                                                <i v-else class="fa fa-long-arrow-down mr-1"></i> -->
                                             </td>
                                             <td class="text-center">${{transaction.newBalance}}</td>
                                         </tr>
@@ -251,17 +237,18 @@
                     </div>
                 </div>
             </div>
-            <div class="row pb-3 ps-5 loanCard3">
-                <div class="col-12  loanCard2">
+
+            <div class="row pb-3 ps-5 loanCard3" v-show="loans.length >= 1" id="loanSection">
+                <div class="col-12 loanCard2">
                     <div class="p-3 row loanCard gap-3 d-flex justify-content-center">
-                        <h3 class="ps-3">Your Current Loans</h3>
-                        <div id="cardLoan" class="card col-xl-3 col-sm-6 col-12" v-for="loan in loans">
-                            <p>{{loan.name}}</p>
-                            <p>Amount:$ {{loan.amount}}</p>
-                            <p>Payments: {{loan.payments}}</p>
-                            <p><span class="bolder">${{(loan.amount / loan.payments).toFixed(2)}}</span> Per Month</p>
-                            <div class="position-absolute bottom-0 end-0 pb-3 pe-3">
-                                <i class='bx bxs-building-house bx-md' v-show="loan.name === 'Mortgage Loan'"></i>
+                        <div class="cardLoan2" v-for="loan in loans">
+                            <h5 class="text-light text-center pt-2">{{loan.name}}</h5>
+                            <p class="text-light">Amount:$ {{loan.amount.toFixed(2)}}</p>
+                            <p class="text-light">Payments: {{loan.payments}}</p>
+                            <p class="text-light"><span class="bolder">${{(loan.amount /
+                                    loan.payments).toFixed(2)}}</span> Per Month</p>
+                            <div class="bottom-0 end-0 pb-3 pe-3 text-light">
+                                <i class='bx bxs-building-house bx-md ' v-show="loan.name === 'Mortgage Loan'"></i>
                                 <i class='bx bxs-car bx-md' v-show="loan.name === 'Car Loan'"></i>
                                 <i class='bx bxs-user bx-md' v-show="loan.name === 'Personal Loan'"></i>
                             </div>
@@ -269,25 +256,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Modal -->
-            <div class="modal fade" id="modalAccount" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Rune Bank | Create new Account </h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            Do you want to create a new Account?
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-purple" @click="createAccount">Create Account</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </main>
     </div>
     <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
@@ -297,8 +266,7 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/vue@3"></script>
     <script src="./data/accounts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="sweetalert2.all.min.js"></script>
+
 </body>
 
 </html>

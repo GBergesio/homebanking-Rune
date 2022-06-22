@@ -48,11 +48,19 @@ const app = Vue.createApp({
             this.initials = initialName.charAt(0) + initialLastName.charAt(0)
         },
         logout() {
-            axios.post('/api/logout').then(response => console.log('signed out!!!'))
+            axios.post('/api/logout')
+            .then(response => 
+              Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Successful Logout!' ,
+                showConfirmButton: false,
+                timer: 1500
+              }))
             setTimeout(function () {
-                window.location.href = './index.html'
+              window.location.href = './index.html'
             }, 1000)
-        },
+          },
         selectLoan(loan) {
             this.typeLoan = loan
             console.log(this.typeLoan)
@@ -105,7 +113,7 @@ const app = Vue.createApp({
                             icon: "success"
                           })
                           setTimeout(function () {
-                            location.reload()
+                            window.location.href = './accounts.html#loanSection'
                           }, 1000)
                         }
                       }, 1000))

@@ -50,9 +50,6 @@ const app = Vue.createApp({
         this.searchTransactionsDescription()
         this.seteoDescription()
         this.searchBalance()
-
-        console.log(this.accountsClient);
-
       })
   },
   methods: {
@@ -60,7 +57,6 @@ const app = Vue.createApp({
       axios.get(`/api/clients/current/accounts`)
         .then(data => {
           this.accountsClient2 = data.data
-          console.log(this.accountsClient2);
         })
     },
     cutName() {
@@ -69,7 +65,15 @@ const app = Vue.createApp({
       this.initials = initialName.charAt(0) + initialLastName.charAt(0)
     },
     logout() {
-      axios.post('/api/logout').then(response => console.log('signed out!!!'))
+      axios.post('/api/logout')
+      .then(response => 
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Successful Logout!' ,
+          showConfirmButton: false,
+          timer: 1500
+        }))
       setTimeout(function () {
         window.location.href = './index.html'
       }, 1000)
@@ -109,9 +113,11 @@ const app = Vue.createApp({
                   this.error = ""
                 } else {
                   Swal.fire({
-                    title: "Transfer",
-                    text: "Successful transfer",
-                    icon: "success"
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Successful transfer!' ,
+                    showConfirmButton: false,
+                    timer: 1500
                   })
                   setTimeout(function () {
                     location.reload()
@@ -151,9 +157,11 @@ const app = Vue.createApp({
                   this.error = ""
                 } else {
                   Swal.fire({
-                    title: "Transfer",
-                    text: "Successful transfer",
-                    icon: "success"
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Successful transfer!' ,
+                    showConfirmButton: false,
+                    timer: 1500
                   })
                   setTimeout(function () {
                     location.reload()
@@ -163,20 +171,7 @@ const app = Vue.createApp({
         }
       })
     },
-    makeTransferOwn2() {
-      axios.post('/api/transactions', `amount=${this.amountOwn}&description=${this.descriptionOwn}&rootAccount=${this.rootAccountOwn}&destinationAccount=${this.destinationAccountOwn}`)
-        .then(response =>
-          setTimeout(function () {
-            location.reload()
-          }, 1000))
-    },
-    showModal() {
-      var myModal = document.getElementById('myModal')
-      var myInput = document.getElementById('myInput')
-      myModal.addEventListener('shown.bs.modal', function () {
-        myInput.focus()
-      })
-    },
+
     sortAccounts() {
       this.accountsClient.sort((a, b) => a.id - b.id)
     },
@@ -194,7 +189,7 @@ const app = Vue.createApp({
       cuski.forEach(account => {
         this.allBalances.push(account.balance)
       })
-      console.log(this.allBalances);
+      // console.log(this.allBalances);
     },
     searchTransactionsDescription() {
       let descriptionVar = this.allTransactions
@@ -210,9 +205,9 @@ const app = Vue.createApp({
       })
     },
     seteoDescription() {
-    this.allDescriptionsTo = this.allDescriptionsTo.map(transaction => transaction.account)
+      // this.allDescriptionsTo = this.allDescriptionsTo.map(transaction => transaction.account)
       const set1 = new Set(this.allDescriptionsTo)
-      console.log(set1);
+      // console.log(set1);
     }
   },
   computed: {
@@ -222,19 +217,17 @@ const app = Vue.createApp({
         lastName: dataClient.lastName,
         email: dataClient.email,
       }
-      return console.log(client)
+      return console.log("")
     },
   },
 }).mount('#app')
 
 document.addEventListener("DOMContentLoaded", function (event) {
-
   const showNavbar = (toggleId, navId, bodyId, headerId) => {
     const toggle = document.getElementById(toggleId),
       nav = document.getElementById(navId),
       bodypd = document.getElementById(bodyId),
       headerpd = document.getElementById(headerId)
-
     // Validate that all variables exist
     if (toggle && nav && bodypd && headerpd) {
       toggle.addEventListener('click', () => {
@@ -249,9 +242,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       })
     }
   }
-
   showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
-
   /*===== LINK ACTIVE =====*/
   const linkColor = document.querySelectorAll('.nav_link')
 
@@ -262,8 +253,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   linkColor.forEach(l => l.addEventListener('click', colorLink))
-
-  // Your code to run since DOM is loaded and ready
 });
 
 $(document).ready(function () {
@@ -289,4 +278,3 @@ $(document).ready(function () {
     return false;
   });
 });
-

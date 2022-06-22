@@ -64,8 +64,8 @@
                                 class="nav_name">Cards</span></a>
                         <a href="./transfers.html" class="nav_link"><i class='bx bx-transfer'></i><span
                                 class="nav_name">Transfers</span></a>
-                        <a href="#" class="nav_link"><i class='bx bx-bar-chart-alt-2 nav_icon'></i><span
-                                class="nav_name">
+                        <a href="./loan-application.html" class="nav_link"><i
+                                class='bx bx-bar-chart-alt-2 nav_icon'></i><span class="nav_name">
                                 Loans</span></a>
                         <a href="../payOut/payOut.html" class="nav_link"><i class='bx bx-money-withdraw'></i><span
                                 class="nav_name">Payments</span></a>
@@ -109,7 +109,7 @@
                         </div>
                         <div class="col-xl-3 col-sm-6 col-12 mb-4">
                             <div>
-                                <a href="#" class="cardQuickAccess qAblue">
+                                <a href="./loan-application.html" class="cardQuickAccess qAblue">
                                     <div class="overlay"></div>
                                     <p><i class='bx bx-bar-chart-alt-2 nav_icon'></i> Loans</p>
                                 </a>
@@ -135,17 +135,38 @@
                                     <label for="since" class="pe-3">Since</label>
                                     <input type="datetime-local" name="since" id="" v-model="sinceDate" required>
                                 </div>
-                                <div class="col-2">
+                                <div class=" col-xl-2 col-12">
                                     <label for="since" class="pe-3">Until</label>
                                     <input type="datetime-local" name="since" id="" v-model="untilDate" required>
                                 </div>
-                                <div class="col-2">
-                                    <button type="submit"  class="btn btn-purple d-flex align-items-center"><i class='bx bxs-file-pdf bx-md pe-1'></i>Download Resume</button>
+                                <div class="col-xl-2 col-12">
+                                    <!-- <button type="submit"  class="btn btn-purple d-flex align-items-center"><i class='bx bxs-file-pdf bx-md pe-1'></i>Download Resume</button> -->
+                                    <button class="download-button" type="submit">
+                                        <div class="docs"><svg class="css-i6dzq1" stroke-linejoin="round"
+                                                stroke-linecap="round" fill="none" stroke-width="2"
+                                                stroke="currentColor" height="20" width="20" viewBox="0 0 24 24">
+                                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z">
+                                                </path>
+                                                <polyline points="14 2 14 8 20 8"></polyline>
+                                                <line y2="13" x2="8" y1="13" x1="16"></line>
+                                                <line y2="17" x2="8" y1="17" x1="16"></line>
+                                                <polyline points="10 9 9 9 8 9"></polyline>
+                                            </svg> Download Resume</div>
+                                        <div class="download">
+                                            <svg class="css-i6dzq1" stroke-linejoin="round" stroke-linecap="round"
+                                                fill="none" stroke-width="2" stroke="currentColor" height="24"
+                                                width="24" viewBox="0 0 24 24">
+                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                                <polyline points="7 10 12 15 17 10"></polyline>
+                                                <line y2="3" x2="12" y1="15" x1="12"></line>
+                                            </svg>
+                                        </div>
+                                    </button>
                                 </div>
                             </form>
                         </div>
 
-                        <div class="containerBalCard mt-3">
+                        <div class="containerBalCard mt-4 mb-3 divTransfers">
                             <div class="table-wrap table-responsive">
                                 <table class="table table-borderless">
                                     <thead>
@@ -155,6 +176,9 @@
                                             </td>
                                             <td class="text-center w100 p-0 py-2" scope="col"><small
                                                     class="text-muted">AMOUNT</small>
+                                            </td>
+                                            <td class="text-center w100 p-0 py-2" scope="col"><small
+                                                    class="text-muted">BALANCE</small>
                                             </td>
                                             <td class="text-center w100 p-0 py-2" scope="col"><small
                                                     class="text-muted">DATE</small>
@@ -180,8 +204,13 @@
                                             <td class="text-center">
                                                 <p class="text-amount"
                                                     :class="{'text-red' : transaction.type === 'DEBIT', 'text-green' : transaction.type === 'CREDIT'}">
-                                                    {{transaction.type == "DEBIT" ? '-$' + transaction.amount : '$' +
+                                                    {{transaction.type == "DEBIT" ? '$' + transaction.amount : '$' +
                                                     transaction.amount }}</p>
+                                            </td>
+                                            <td class="text-center">
+                                                <p class="text-amount"
+                                                    :class="{'text-red' : transaction.type === 'DEBIT', 'text-green' : transaction.type === 'CREDIT'}">
+                                                    ${{transaction.newBalance}}</p>
                                             </td>
                                             <td class="text-center"><span
                                                     class="bx bx-calendar text-muted">{{getTransactionDate(transaction.transactionDate)}}</span>

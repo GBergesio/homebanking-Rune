@@ -9,7 +9,8 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href='https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="./styles/style.css" rel="stylesheet">
+    <link href="../web/styles/style.css" rel="stylesheet">
+    <link href="./styles/styleAdmin.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -41,13 +42,10 @@
                             <div class="header_img d-none d-sm-block">
                                 <h5 v-cloak>{{initials}}</h5>
                             </div>
-                            <!-- <img src="assets/images/avatar/avatar-1.png" alt=""> -->
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="../web/user.html"><i class="fa fa-user size-icon-1"></i>
                                 <span>My Profile</span></a>
-                            <!-- <a class="dropdown-item" href="settings.html"><i class="fa fa-cog size-icon-1"></i>
-                                <span>Settings</span></a> -->
                             <hr class="dropdown-divider">
                             <a class="dropdown-item" href="#" @click="logout"><i class="bx bx-exit  size-icon-1"></i>
                                 <span>SignOut</span></a>
@@ -64,8 +62,6 @@
                     <div class="nav_list">
                         <a href="../web/accounts.html" class="nav_link"><i class='bx bx-user nav_icon'></i><span
                                 class="nav_name">Switch as Client </span></a>
-                        <!-- <a href="./user.html" class="nav_link"><i class='bx bxs-bolt-circle'></i><span
-                                class="nav_name">Admin</span></a> -->
                     </div>
                 </div>
                 <a href="#" class="nav_link" @click="logout"><i class='bx bx-log-out nav_icon'></i><span

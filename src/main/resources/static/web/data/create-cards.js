@@ -28,11 +28,7 @@ const app = Vue.createApp({
                 this.accountsClient = data.data.accountDTO
                 this.infoClient = data.data.firstName + " " + data.data.lastName
                 this.cards = this.dataClient.cards
-                // this.creditCard = this.cards.length
-                console.log(this.cards);
-                // console.log(this.creditCard);
                 this.searchCards()
-                console.log(this.allCreditCards.length);
                 this.cutName()
             })
     },
@@ -43,16 +39,10 @@ const app = Vue.createApp({
             const getTwoDigits = dateYear.toString().substring(2)
             return (date.getMonth() + 1) + "/" + getTwoDigits
         },
-        logout() {
-            axios.post('/api/logout').then(response => console.log('signed out!!!'))
-            setTimeout(function () {
-                window.location.href = './index.html'
-            }, 1000)
-        },
         createCard() {
             Swal.fire({
                 title: 'Are you sure?',
-                text: "You won't be able to revert this!",
+                text: "You are about to create a card!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -108,15 +98,22 @@ const app = Vue.createApp({
             })
         },
         logout() {
-            axios.post('/api/logout').then(response => console.log('signed out!!!'))
+            axios.post('/api/logout')
+            .then(response => 
+              Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Successful Logout!' ,
+                showConfirmButton: false,
+                timer: 1500
+              }))
             setTimeout(function () {
-                window.location.href = './index.html'
+              window.location.href = './index.html'
             }, 1000)
-        },
+          },
         changeColor(color) {
             let container = document.querySelector("#colorCard")
             let containerBack = document.querySelector("#colorCardBack")
-            console.log(this.cardColor);
             switch (color) {
                 case "GOLD":
                     if (container.classList.contains('silver') && containerBack.classList.contains('silverBack') ) {

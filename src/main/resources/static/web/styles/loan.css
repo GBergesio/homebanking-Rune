@@ -294,8 +294,6 @@ input[type=number]::-webkit-outer-spin-button {
     #btnSend{
         width: 60%!important;
     }
-
-
   }
 
   @media (max-width: 840px) {
@@ -308,5 +306,13 @@ input[type=number]::-webkit-outer-spin-button {
     .cardLoan{
         width: 90%;
     }
+  }
 
+  .welcome h3{
+    font-size: 3rem;
+    font-weight: 700;
+  }
+
+  .textInterest{
+    font-weight: 700;
   }

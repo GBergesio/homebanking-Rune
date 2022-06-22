@@ -55,9 +55,9 @@ public class HomebankingApplication {
 			Loan loanThird = new Loan("Car Loan", 300000d,17d,List.of(6,12,24,36));
 
 			Card cardOne = new Card(CardType.DEBIT, CardColor.GOLD,4509243231123412L,133, LocalDateTime.now().plusDays(55),LocalDateTime.now(),clientOne,true);
-			Card cardSecond = new Card(CardType.CREDIT, CardColor.TITANIUM,4509242231377912L,233, LocalDateTime.now().minusMonths(4),LocalDateTime.now(),clientOne,true);
-			Card cardFourth = new Card(CardType.CREDIT, CardColor.SILVER,4509243331371932L,993, LocalDateTime.now().plusMonths(4),LocalDateTime.now(),clientOne,true);
-			Card cardThird = new Card(CardType.CREDIT, CardColor.SILVER,4509212231267945L,113, LocalDateTime.now().plusYears(5),LocalDateTime.now(),clientSecond,true);
+			Card cardSecond = new Card(CardType.CREDIT, CardColor.BLACK,4509242231377912L,233, LocalDateTime.now().minusMonths(4),LocalDateTime.now(),clientOne,true);
+			Card cardFourth = new Card(CardType.CREDIT, CardColor.PLATINUM,4509243331371932L,993, LocalDateTime.now().plusMonths(4),LocalDateTime.now(),clientOne,true);
+			Card cardThird = new Card(CardType.CREDIT, CardColor.PLATINUM,4509212231267945L,113, LocalDateTime.now().plusYears(5),LocalDateTime.now(),clientSecond,true);
 
 			repositoryClient.save(clientOne);
 			repositoryClient.save(clientSecond);

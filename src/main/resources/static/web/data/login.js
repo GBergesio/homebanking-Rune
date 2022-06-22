@@ -75,9 +75,9 @@ const app = Vue.createApp({
                                     })
                                     setTimeout(function () {
                                         window.location.href = './accounts.html'
-                                    }, 800)
+                                    }, 1000)
                                 }
-                            }, 10))
+                            }))
                 }
             })
         },

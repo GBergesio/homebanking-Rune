@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,19 +15,16 @@
         href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,800;1,200;1,300;1,400;1,500&display=swap"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Favicons -->
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Homebanking - Loans</title>
 </head>
-
-
 <body id="body-pd">
     <div id="app">
         <header class="header" id="header">
             <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
             <div class="header_img_logo slide-in-blurred-top"><img src="./img/runebank.png" alt="Logo"></div>
-            <!-- <button class="btn"> <div class="header_img"><h5>{{initials}}</h5></div></button> -->
             <div class="menu">
                 <ul class="d-flex justify-content-end">
                     <li class="nav-item dropdown">
@@ -37,13 +33,10 @@
                             <div class="header_img d-none d-sm-block">
                                 <h5 v-cloak>{{initials}}</h5>
                             </div>
-                            <!-- <img src="assets/images/avatar/avatar-1.png" alt=""> -->
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="./user.html"><i class="fa fa-user size-icon-1"></i>
                                 <span>My Profile</span></a>
-                            <!-- <a class="dropdown-item" href="settings.html"><i class="fa fa-cog size-icon-1"></i>
-                            <span>Settings</span></a> -->
                             <hr class="dropdown-divider">
                             <a class="dropdown-item" href="#" @click="logout"><i class="bx bx-exit  size-icon-1"></i>
                                 <span>SignOut</span></a>
@@ -52,7 +45,6 @@
                 </ul>
             </div>
         </header>
-
         <div class="l-navbar" id="nav-bar">
             <nav class="nav">
                 <div>
@@ -78,13 +70,10 @@
                         class="nav_name">SignOut</span></a>
             </nav>
         </div>
-
         <main class="fade-in-fwd">
-
             <div class="ps-3 pt-5 welcome">
                 <h2>{{infoClient}} </h2>
             </div>
-
             <!-- QUICK ACCESS -->
             <div class="container-fluid d-none d-md-block">
                 <section class="responsiveAccess">
@@ -99,7 +88,6 @@
                                 <a href="./accounts.html" class="cardQuickAccess qAviolet">
                                     <div class="overlay"></div>
                                     <p><i class='bx bx-wallet'></i> Accounts</p>
-
                                 </a>
                             </div>
                         </div>
@@ -131,7 +119,7 @@
                 </section>
             </div>
             <div class="ps-3 pt-3 welcome d-block d-sm-none">
-                <h3>Loan Types</h3>
+                <h3 class="text-center">Loan Types</h3>
             </div>
             <!-- LOAN TYPES -->
             <div class="d-flex justify-content-center pt-5 pb-5 ">
@@ -148,27 +136,22 @@
                                     <li v-show="loan.name === 'Car Loan'">Now you can buy your favorite car</li>
                                     <li v-show="loan.name === 'Personal Loan'">Treat Yourself, buy what you want!</li>
                                     <li v-show="loan.name === 'Mortgage Loan'">Your house at your fingertips</li>
-                                    <li>Only {{loan.interest}}%</li>
+                                    <li><span class="text-success textInterest">Only {{loan.interest}}% Interest</span></li>
                                 </ul>
                                 <button class="btn pricing-plan-purchase-btn" @click="selectLoan(loan)">Request</button>
-                                <!-- <button v-show="(clientLoans.name == 'Mortgage Loan').length == 1 " class="btn pricing-plan-purchase-btn disabled">Loan taken</button> -->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
             <!-- LOAN FORM -->
             <div class="d-flex justify-content-center pt-3 mb-5 mediaWidth2" id="form">
                 <div class="cardLoan pricing-card mb-3">
-
                     <form class="row d-flex justify-content-center gap-5 pb-5 " @submit.prevent="requestLoan">
-
                         <div class="col-12">
                             <h2 class="text-center pt-4 mt-4">Request Loan</h2>
                         </div>
-
-                        <div class="col-6 row bg-primary d-flex justify-content-center inputsLoan">
+                        <div class="col-6 row d-flex justify-content-center inputsLoan">
                             <div class="inputGroup col-12">
                                 <h3 class="text-center mt-5 mb-5">Select amount</h3>
                                 <label for="amount" class="labelAmount">Amount</label>
@@ -192,7 +175,6 @@
                                 </select>
                             </div>
                         </div>
-
                         <div class="col-6 p-3 resumen bg-light d-flex justify-content-center flex-column ">
                             <h4 class="text-center pb-5">Resumen</h4>
                             <ul>
@@ -207,7 +189,6 @@
                                 </li>
                             </ul>
                         </div>
-
                         <div class=" d-flex justify-content-center" id="checkCondition">
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="flexRadioDefault"
@@ -221,38 +202,8 @@
                     </form>
                 </div>
             </div>
-
         </main>
-
-        <!-- Modal -->
-        <div class="modal fade" id="modalLoan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Loan Confirmation</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        You are about to apply for a loan
-                        <ul>
-                            <li>A total of ${{amountLoan}} to be paid in ${{(amountLoan*1.2/paymentsLoan).toFixed(2)}}
-                                per month</li>
-                        </ul>
-                        <p class="text-danger" v-show="notification">{{errorMessage}}</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary btn-purple" @click="requestLoan()">Apply for
-                            Loan</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-
-
-
-
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -260,17 +211,11 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
     <script src="https://unpkg.com/vue@3"></script>
-
     <script src="./data/loan-application.js"></script>
-
     <script type="text/javascript" src="./data/vanilla-tilt.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="sweetalert2.all.min.js"></script>
-
 </body>
 
 </html>

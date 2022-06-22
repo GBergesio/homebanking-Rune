@@ -34,17 +34,19 @@ const app = Vue.createApp({
             return (date.getMonth() + 1) + "/" + getTwoDigits
         },
         logout() {
-            axios.post('/api/logout').then(response => console.log('signed out!!!'))
+            axios.post('/api/logout')
+            .then(response => 
+              Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Successful Logout!' ,
+                showConfirmButton: false,
+                timer: 1500
+              }))
             setTimeout(function () {
-                window.location.href = './index.html'
+              window.location.href = './index.html'
             }, 1000)
-        },
-        logout() {
-            axios.post('/api/logout').then(response => console.log('signed out!!!'))
-            setTimeout(function () {
-                window.location.href = './index.html'
-            }, 1000)
-        },
+          },
         cutName() {
             let initialName = this.dataClient.firstName
             let initialLastName = this.dataClient.lastName

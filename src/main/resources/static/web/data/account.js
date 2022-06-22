@@ -67,8 +67,6 @@ const app = Vue.createApp({
             link.setAttribute("download",`Resume.pdf`)
             document.body.appendChild(link)
             link.click()
-            console.log(this.sinceDate);
-            console.log(this.untilDate);
         })
         },
         sortTransactions(){
@@ -78,11 +76,19 @@ const app = Vue.createApp({
             const date = new Date(dateImput)
             return date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds()  
         },
-        logout(){
-            axios.post('/api/logout').then(response => console.log(''))
-            setTimeout(function(){
-              window.location.href='./index.html'
-          },1000) 
+        logout() {
+            axios.post('/api/logout')
+            .then(response => 
+              Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Successful Logout!' ,
+                showConfirmButton: false,
+                timer: 1500
+              }))
+            setTimeout(function () {
+              window.location.href = './index.html'
+            }, 1000)
           },
           cutName(){
             let initialName = this.dataClient.firstName 

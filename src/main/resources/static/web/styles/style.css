@@ -75,12 +75,13 @@ a {
 }
 
 
-@property --gap{
+@property --gap {
   syntax: '<length>';
   inherits: true;
   initial-value: 0;
 }
-@property --angle{
+
+@property --angle {
   syntax: '<angle>';
   inherits: true;
   initial-value: 0deg;
@@ -90,7 +91,7 @@ a {
   --border: 15px;
   --gap: 12px;
   --color: #FA6900;
-  
+
   width: 200px;
   aspect-ratio: 1;
   box-sizing: border-box;
@@ -98,29 +99,28 @@ a {
   margin: 20px;
   cursor: pointer;
   padding: calc(var(--border) + var(--gap));
-  
+
   --angle: 90deg;
   background:
-    radial-gradient(farthest-side,var(--color) 97%,#0000 101%) 85.35% 85.35%,
-    conic-gradient(from calc(180deg - var(--angle)/2),#0000 var(--angle),var(--color) 0),
-    radial-gradient(farthest-side,var(--color) 97%,#0000 101%) 14.65% 85.35%;
-  background-size: var(--border) var(--border),auto;
+    radial-gradient(farthest-side, var(--color) 97%, #0000 101%) 85.35% 85.35%,
+    conic-gradient(from calc(180deg - var(--angle)/2), #0000 var(--angle), var(--color) 0),
+    radial-gradient(farthest-side, var(--color) 97%, #0000 101%) 14.65% 85.35%;
+  background-size: var(--border) var(--border), auto;
   background-repeat: no-repeat;
-  
+
   -webkit-mask:
-    radial-gradient(farthest-side, 
-     #000  calc(99%  - calc(var(--border) + var(--gap))),
-     #0000 calc(100% - calc(var(--border) + var(--gap))) 
-           calc(99%  - var(--border)), 
-     #000  calc(100% - var(--border)));
-          mask:
-    radial-gradient(farthest-side, 
-     #000  calc(99%  - calc(var(--border) + var(--gap))),
-     #0000 calc(100% - calc(var(--border) + var(--gap))) 
-           calc(99%  - var(--border)), 
-     #000  calc(100% - var(--border)));
-  transition: --angle .4s,--gap .4s;
+    radial-gradient(farthest-side,
+      #000 calc(99% - calc(var(--border) + var(--gap))),
+      #0000 calc(100% - calc(var(--border) + var(--gap))) calc(99% - var(--border)),
+      #000 calc(100% - var(--border)));
+  mask:
+    radial-gradient(farthest-side,
+      #000 calc(99% - calc(var(--border) + var(--gap))),
+      #0000 calc(100% - calc(var(--border) + var(--gap))) calc(99% - var(--border)),
+      #000 calc(100% - var(--border)));
+  transition: --angle .4s, --gap .4s;
 }
+
 .iniciales:hover {
   --angle: 0deg;
   --gap: 5px;
@@ -293,27 +293,28 @@ a {
     width: calc(var(--nav-width) + 156px)
   }
 
-  .modal{
+  .modal {
     width: 100%;
 
   }
-  .modal-backdrop.show{
+
+  .modal-backdrop.show {
     position: relative;
     opacity: 0;
   }
 
-  
-  .fade{
+
+  .fade {
     width: 100%;
   }
-  
+
   .body-pd {
     padding-left: calc(var(--nav-width) + 188px)
   }
 
 }
 
-.containerBalCard{
+.containerBalCard {
   background-color: #fff;
   border: none;
   border-radius: 10px;
@@ -327,18 +328,18 @@ a {
   transform: translateY(-10px);
 }
 
-.container2{
+.container2 {
   background-color: #fff;
   border: none;
   border-radius: 10px;
 }
 
-.container2 h3{
+.container2 h3 {
   font-weight: 700;
   font-size: 2.3rem;
 }
 
-.container2 h4{
+.container2 h4 {
   font-weight: 400;
   font-size: 1.8rem;
 }
@@ -374,7 +375,6 @@ a {
 
 #accountCard {
   border-right: 1px solid black;
-
 }
 
 #accountCard p {
@@ -533,7 +533,7 @@ a {
   height: 32rem;
 }
 
-.loanCard{
+.loanCard {
   border-radius: 4px;
   background: #fff;
 }
@@ -822,15 +822,14 @@ a {
   font-weight: 700;
 }
 
-.cardLoan{
+.cardLoan {
   width: 74%;
-} 
+}
 
 #cardLoan {
   padding: 1rem;
   box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
 }
-
 
 body::-webkit-scrollbar {
   width: 8px;
@@ -847,8 +846,6 @@ body::-webkit-scrollbar-thumb {
 
   -webkit-box-shadow: rgba(0, 0, 0, .12) 0 3px 13px 1px;
 }
-
-
 
 .reveal-text,
 .reveal-text::after {
@@ -1357,7 +1354,7 @@ tbody tr td.text-muted {
 }
 
 .pagination .page-item.disabled .page-link {
-  background-color:  var(--first-color);
+  background-color: var(--first-color);
   color: #eee;
   cursor: crosshair
 }
@@ -1433,12 +1430,12 @@ tbody tr td.text-muted {
   }
 }
 
-.containerChart{
+.containerChart {
   width: 87%;
 
 }
 
-.accountCard{
+.accountCard {
   border-radius: 10px;
   border: none;
   -webkit-transition: all 0.6s;
@@ -1451,36 +1448,53 @@ tbody tr td.text-muted {
   transform: translateY(-10px);
 }
 
+.accountCard2 {
+  border-radius: 10px;
+  border: none;
+  -webkit-transition: all 0.6s;
+  transition: all 0.6s;
+  min-height: 32rem;
+}
 
-@media(max-width:450px){
-  .containerChart{
+.accountCard2:hover {
+  box-shadow: 0 2px 40px 0 rgba(205, 205, 205, 0.55);
+  -webkit-transform: translateY(-10px);
+  transform: translateY(-10px);
+}
+
+
+@media(max-width:450px) {
+  .containerChart {
     width: 100%;
     background-color: #F8F9FA;
   }
 }
 
-@media(max-width:920px){
-  .containerChart{
+@media(max-width:920px) {
+  .containerChart {
     width: 100%;
     background-color: #F8F9FA;
   }
 }
 
-@media(min-width:1280px){
+@media(min-width:1280px) {
   .wrapper {
     min-height: 55rem;
     max-width: 800px;
     margin: 10px auto;
     padding: 10px 30px
   }
-  .modal{
+
+  .modal {
     margin-top: 2rem;
   }
-  .loanCard{
+
+  .loanCard {
     background: rgb(255, 255, 255);
     padding: 3rem;
   }
-  .loanCard2{
+
+  .loanCard2 {
     padding-left: 3rem;
     padding-right: 2.4rem;
     padding-top: 1rem;
@@ -1489,8 +1503,8 @@ tbody tr td.text-muted {
 }
 
 
-@media(max-width:768px){
-  .modal{
+@media(max-width:768px) {
+  .modal {
     margin-top: 1rem;
     padding-top: 6rem;
   }
@@ -1501,27 +1515,29 @@ tbody tr td.text-muted {
     border-radius: 1rem;
     margin-top: 3rem;
   }
-  .modal-backdrop.show{
+
+  .modal-backdrop.show {
     opacity: 0;
     position: relative;
   }
 }
 
 @media (max-width:915px) {
-  .wrapper{
+  .wrapper {
     margin-top: 2rem;
   }
-  .loanCard2{
+
+  .loanCard2 {
     padding-right: 3.5rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
   }
-  
+
 }
 
 
-@media(max-width:500px){
-  .modal{
+@media(max-width:500px) {
+  .modal {
     padding-top: 16rem;
   }
 
@@ -1531,32 +1547,34 @@ tbody tr td.text-muted {
     border-radius: 1rem;
   }
 
-  .modal-backdrop.show{
+  .modal-backdrop.show {
     opacity: 0;
     position: relative;
   }
-  .loanCard3{
+
+  .loanCard3 {
 
     width: 23rem;
     padding: 0;
   }
 
-  .loanCard2{
+  .loanCard2 {
 
     width: 100%;
     padding: 0;
-    padding-right:1.5rem ;
+    padding-right: 1.5rem;
 
     /* background-color: red; */
   }
 }
 
 
-.btn-purple{
-  background-color: var(--first-color); 
+.btn-purple {
+  background-color: var(--first-color);
   color: white;
 }
-.btn-purple a{
+
+.btn-purple a {
   color: white;
   text-decoration: none;
 }
@@ -1566,75 +1584,62 @@ tbody tr td.text-muted {
   color: white;
 }
 
-.marginStart{
+.marginStart {
   padding-left: 2rem;
-
 }
-.marginStart2{
+
+.marginStart2 {
   padding-left: 2.2rem;
-
 }
-
 
 .menu {
   width: 3rem;
   margin-right: 4rem;
-	float: right;
-	display: flex;
-	align-items: center;
-	height: 75px;
-	padding: 0 10px;
+  float: right;
+  display: flex;
+  align-items: center;
+  height: 75px;
+  padding: 0 10px;
 }
 
 .menu ul {
-	padding: 0;
-	margin: 0;
+  padding: 0;
+  margin: 0;
 }
-.menu ul li span{
-	margin-left: 12px;
-	font-size: 15px;
+
+.menu ul li span {
+  margin-left: 12px;
+  font-size: 15px;
 }
- 
+
 .menu ul li {
-	display: inline-block;
-	margin: 8px 10px 0 10px;
+  display: inline-block;
+  margin: 8px 10px 0 10px;
 }
 
 .menu ul li a {
-	text-decoration: none;
-	color: var(--default-color);
-}
-
- 
-.menu ul li a:hover,
-.menu ul li .dropdown-toggle:hover {
-	color: red;
+  text-decoration: none;
+  color: var(--default-color);
 }
 
 .menu ul li .dropdown-toggle {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .menu ul li .dropdown-menu {
-	margin-top: 30px;
-	margin-right: 10px;
- 	border: 0;
-	box-shadow: 0 0 15px rgba(0, 0, 0, .1);
-	background: var(--first-color);
+  margin-top: 30px;
+  margin-right: 10px;
+  border: 0;
+  box-shadow: 0 0 15px rgba(0, 0, 0, .1);
 }
 
-
-.menu ul li .dropdown-menu a{
-	color: #017EFA;
-	font-weight: 500;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	padding: 10px 15px;
+.menu ul li .dropdown-menu a {
+  color: #000000;
+  font-weight: 500;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px 15px;
 }
-
-
-
-
 
 #menu {
   display: flex;
@@ -1689,62 +1694,195 @@ tbody tr td.text-muted {
 .panel:hover {
   flex-grow: 2;
 }
+
 .panel:hover .name {
   margin-top: -2rem;
 }
+
 .panel:hover .type {
   margin-top: 1.75vh;
   font-size: .8rem;
 }
+
 .panel:hover .abv {
   margin-top: .3rem;
 }
 
-/* @media (orientation: landscape) {
-
-    body::before {
-      content: "";
-      display: block;
-      height: 100vh;
-      width: 100%;
-      background: url("http://lorempixel.com/640/480/food") center/cover;
-      filter: blur(5vh);
-      transform: scale(1.2);
-      opacity: 0.4;
-    }
-  }
-  @media (orientation: portrait) {
-    #menu {
-      border-radius: 0;
-      width: 100%;
-      height: 100vh;
-    }
-  } */
-
 .titaniumAcc {
-  background: rgb(2,0,36);
-  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(1,1,55,1) 53%, rgba(49,0,61,1) 100%);
+  background: rgb(2, 0, 36);
+  background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(1, 1, 55, 1) 53%, rgba(49, 0, 61, 1) 100%);
   color: white;
 }
 
 .silverAcc {
-  background: rgb(242,235,233);
-background: linear-gradient(90deg, rgba(242,235,233,1) 0%, rgba(209,204,203,1) 53%, rgba(147,144,144,1) 100%);
-color: white;
-}
-
-.goldAcc {
-  background: rgb(189,136,44);
-  background: linear-gradient(151deg, rgba(189,136,44,1) 0%, rgba(192,138,50,1) 99%);
+  background: rgb(242, 235, 233);
+  background: linear-gradient(90deg, rgba(242, 235, 233, 1) 0%, rgba(209, 204, 203, 1) 53%, rgba(147, 144, 144, 1) 100%);
   color: white;
 }
 
-.bg-purple{
+.goldAcc {
+  background: rgb(189, 136, 44);
+  background: linear-gradient(151deg, rgba(189, 136, 44, 1) 0%, rgba(192, 138, 50, 1) 99%);
+  color: white;
+}
+
+.bg-purple {
   background-color: var(--first-color);
   color: white;
   width: 50rem;
 }
 
-.typeAccount{
+.typeAccount {
   font-size: 1.1rem;
+}
+
+.bgLb {
+  background-color: #12bbd4;
+}
+
+.bgPurple {
+  background: linear-gradient(135deg, #7600d6, #600ca4);
+  color: white;
+}
+
+.bgPurple:hover {
+  color: white;
+}
+
+.cardLoan2 {
+  width: 14rem;
+  height: 254px;
+  background: linear-gradient(135deg, #7600d6, #600ca4);
+  background-size: 600% 600%;
+  border-radius: 10px;
+  -webkit-animation: grandienteCard 57s ease infinite;
+  -moz-animation: grandienteCard 57s ease infinite;
+  -o-animation: grandienteCard 57s ease infinite;
+  animation: grandienteCard 57s ease infinite;
+  color: white;
+  transition: all 300ms;
+}
+
+.cardLoan2:hover {
+  opacity: 0.8;
+  transform: scale(1.10);
+}
+
+.download-button {
+  position: relative;
+  border-width: 0;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 4px;
+  z-index: 1;
+}
+
+.download-button .docs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 40px;
+  padding: 0 10px;
+  border-radius: 4px;
+  z-index: 1;
+  background-color: var(--second-color);
+  border: solid 1px #e8e8e82d;
+  transition: all .5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.download {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 90%;
+  margin: 0 auto;
+  z-index: -1;
+  border-radius: 4px;
+  transform: translateY(0%);
+  background-color: #017EFA;
+  transition: all .5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.download-button:hover .download {
+  transform: translateY(100%)
+}
+
+.download svg polyline,
+.download svg line {
+  animation: docs 1s infinite;
+}
+
+@keyframes docs {
+  0% {
+    transform: translateY(0%);
+  }
+
+  50% {
+    transform: translateY(-15%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+#chartdiv canvas:last-child {
+  display: none;
+}
+
+.divTransfers {
+  max-height: 21rem;
+  overflow-y: scroll;
+}
+
+.divTransfers::-webkit-scrollbar {
+  width: 8px;
+  background-color: #cbe4f0;
+}
+
+.divTransfers::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.divTransfers::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(45deg, var(--second-color), var(--first-color));
+
+  -webkit-box-shadow: rgba(0, 0, 0, .12) 0 3px 13px 1px;
+}
+
+.swal2-show{
+  background-image: linear-gradient(45deg, var(--second-color), var(--first-color))!important;
+  /* background-color: var(--first-color)!important; */
+  color: white!important;
+}
+
+.swal2-confirm{
+  background-color: #28df99!important;
+}
+
+.swal2-radio{
+  background-image: linear-gradient(45deg, var(--second-color), var(--first-color))!important;
+}
+
+.swal2-radio input{
+  background-color: #fff;
+  border: 2px solid #7600d6;
+  border-radius: 5px;
+}
+
+.swal2-success-circular-line-left {
+  background-color: transparent !important;
+}
+
+.swal2-success-circular-line-right {
+  background-color: transparent !important;
+}
+
+.swal2-success-fix {
+  background-color: transparent !important;
 }
