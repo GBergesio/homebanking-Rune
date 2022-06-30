@@ -53,7 +53,7 @@ public class TransactionController {
     @Autowired
     private PDFService pdfService;
 
-
+    @CrossOrigin
     @Transactional
     @PostMapping("/transactions")
     public ResponseEntity<Object> transaction(Authentication authentication,
